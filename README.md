@@ -1,17 +1,15 @@
 Fanbook Bot SDK
 
-Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/manage/doc/)，封装了包含Oauth2.0 API、Bot API等开放接口。并内部提供了一些简单的工具类，和网络异常重试处理机制，能够简化部分Fanbook bot的开发流程。
+Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/manage/doc/)，封装了包含Oauth2.0 API、Bot API等开放接口的Java集成开发工具包。SDK内部提供了一些简单的工具类，并加入了网络异常重试处理机制，能够简化部分Fanbook bot的开发流程。
 
----
+
 
 ## 更新日志
 
 | 版本  | 更新日期 | 作者  | 变更记录 |
 | --- | --- | --- | --- |
 | 0.0.1 | 2022-05-09 | peng.gan | 第一个版本的Fanbook Bot Java SDK。包含大部分常用的Bot API和Oauth2 API。 |
-|     |     |     |     |
 
----
 
 ## 引入工具包
 
