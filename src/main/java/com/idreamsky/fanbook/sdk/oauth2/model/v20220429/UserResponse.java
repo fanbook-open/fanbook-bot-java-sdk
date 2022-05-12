@@ -16,4 +16,7 @@ public class UserResponse implements Serializable {
 
     @SerializedName("message")
     private String message;
+
+    @SerializedName("err")
+    private String err;
 }
