@@ -20,7 +20,7 @@ public class AppApi extends FanbookRestfulApi<AppResponse> {
     /**
      * 注意，这里传递的是Fanbook 客户端使用的用户token
      *
-     * @param authorizationOfFanbookClient
+     * @param authorizationOfFanbookClient 客户端使用的用户token
      */
     public void addAuthorization(String authorizationOfFanbookClient) {
         super.addHeader(HEADER_AUTHORIZATION, authorizationOfFanbookClient);
@@ -56,7 +56,7 @@ public class AppApi extends FanbookRestfulApi<AppResponse> {
      * 获取响应实体类的class；
      * PS：注意不要使用带泛型的实体类T
      *
-     * @return
+     * @return T
      */
     @Override
     public Class<AppResponse> getResponseClass() {
@@ -66,7 +66,7 @@ public class AppApi extends FanbookRestfulApi<AppResponse> {
     /**
      * 自定义参数校验
      *
-     * @throws BotArgumentException
+     * @throws BotArgumentException client本地参数校验失败异常
      */
     @Override
     public void validate() throws BotArgumentException {
@@ -81,8 +81,8 @@ public class AppApi extends FanbookRestfulApi<AppResponse> {
     /**
      * 根据数据传递格式，构造request body
      *
-     * @param clientProfile
-     * @return
+     * @param clientProfile 客户端环境
+     * @return 字符串格式的http request body
      */
     @Override
     protected String buildBody(ClientProfile clientProfile) {
@@ -93,8 +93,8 @@ public class AppApi extends FanbookRestfulApi<AppResponse> {
     /**
      * 自定义构建URL变量
      *
-     * @param clientProfile
-     * @return
+     * @param clientProfile 客户端环境
+     * @return k-v形式的URL变量集合
      */
     @Override
     protected Map<String, String> buildUriVariables(ClientProfile clientProfile) {

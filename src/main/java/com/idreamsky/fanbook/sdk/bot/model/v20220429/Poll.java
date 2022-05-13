@@ -43,12 +43,7 @@ public class Poll implements Serializable {
     private String type; ///< Poll type, currently can be “regular” or “quiz”
     @SerializedName(ALLOWSMULTIPLEANSWERS_FIELD)
     private Boolean allowMultipleAnswers; ///< True, if the poll allows multiple answers
-    /**
-     * Optional. 0-based identifier of the correct answer option.
-     *
-     * @apiNote Available only for polls in the quiz mode,
-     * which are closed or was sent (not forwarded) to the private chat with the bot.
-     */
+
     @SerializedName(CORRECTOPTIONID_FIELD)
     private Integer correctOptionId; ///< True, if the poll allows multiple answers
     @SerializedName(OPENPERIOD_FIELD)

@@ -50,7 +50,7 @@ public class SendCodeApi extends FanbookRestfulApi<SendCodeResponse> {
      * 获取响应实体类的class；
      * PS：注意不要使用带泛型的实体类T
      *
-     * @return
+     * @return T
      */
     @Override
     public Class<SendCodeResponse> getResponseClass() {
@@ -60,7 +60,7 @@ public class SendCodeApi extends FanbookRestfulApi<SendCodeResponse> {
     /**
      * 自定义参数校验
      *
-     * @throws BotArgumentException
+     * @throws BotArgumentException client本地参数校验失败异常
      */
     @Override
     public void validate() throws BotArgumentException {

@@ -50,8 +50,8 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
     /**
      * 请求Http接口
      *
-     * @param botMethod
-     * @return
+     * @param botMethod 机器人接口方法
+     * @return HttpResponse http标准的响应实体类
      */
     @Override
     public <T extends Serializable> HttpResponse invoke(BotMethod<T> botMethod) {
@@ -63,8 +63,8 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
     /**
      * 标准的请求Http接口
      *
-     * @param httpRequest
-     * @return
+     * @param httpRequest Http请求实体类
+     * @return HttpResponse 响应实体类
      */
     @Override
     public <T extends Serializable> HttpResponse doInvoke(HttpRequest httpRequest) {

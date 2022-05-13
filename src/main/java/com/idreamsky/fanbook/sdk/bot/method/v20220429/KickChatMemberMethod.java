@@ -69,7 +69,7 @@ public class KickChatMemberMethod extends BotMethod<Boolean> {
     /**
      * 自定义参数校验
      *
-     * @throws BotArgumentException
+     * @throws BotArgumentException client本地参数校验失败异常
      */
     @Override
     public void validate() throws BotArgumentException {

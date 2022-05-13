@@ -22,7 +22,7 @@ public class GetBotsMethod extends BotMethod<ArrayList<Bot>> {
     /**
      * 注意，这里传递的是Fanbook 客户端使用的用户token
      *
-     * @param authorizationOfFanbookClient
+     * @param authorizationOfFanbookClient 客户端使用的用户token
      */
     public void setAuthorization(String authorizationOfFanbookClient) {
         super.addHeader(HEADER_AUTHORIZATION, authorizationOfFanbookClient);
@@ -54,8 +54,8 @@ public class GetBotsMethod extends BotMethod<ArrayList<Bot>> {
     /**
      * 使用指定的泛型实体类T解析response body
      *
-     * @param responseBody
-     * @return
+     * @param responseBody http response body
+     * @return 反序列化类型T对应的实体类
      */
     @Override
     public ArrayList<Bot> parseResponse(String responseBody) {
@@ -73,7 +73,7 @@ public class GetBotsMethod extends BotMethod<ArrayList<Bot>> {
     /**
      * 自定义参数校验
      *
-     * @throws BotArgumentException
+     * @throws BotArgumentException client本地参数校验失败异常
      */
     @Override
     public void validate() throws BotArgumentException {

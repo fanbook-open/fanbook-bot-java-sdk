@@ -20,7 +20,7 @@ public abstract class FanbookRestfulApi<T extends Serializable> extends BotMetho
      * 获取响应实体类的class；
      * PS：注意不要使用带泛型的实体类T
      *
-     * @return
+     * @return T
      */
     public abstract Class<T> getResponseClass();
 
@@ -37,8 +37,8 @@ public abstract class FanbookRestfulApi<T extends Serializable> extends BotMetho
     /**
      * 自定义构建URL
      *
-     * @param clientProfile
-     * @return
+     * @param clientProfile 客户端环境
+     * @return 字符串格式的URL
      */
     @Override
     protected String buildUrl(ClientProfile clientProfile) {

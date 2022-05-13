@@ -19,13 +19,7 @@ public class Contact implements Serializable {
     private String firstName; ///< Contact's first name
     @SerializedName(LASTNAME_FIELD)
     private String lastName; ///< Optional. Contact's last name
-    /**
-     * Optional.
-     * Contact's user identifier in Telegram.
-     *
-     * @apiNote This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it.
-     * But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.
-     */
+
     @SerializedName(USERID_FIELD)
     private Long userId; ///< Optional. Contact's user identifier in Telegram
     @SerializedName(VCARD_FIELD)

@@ -49,8 +49,8 @@ public class GetPrivateChatMethod extends BotMethod<Chat> {
     /**
      * 使用指定的泛型实体类T解析response body
      *
-     * @param responseBody
-     * @return
+     * @param responseBody http response body
+     * @return 反序列化类型T对应的实体类
      */
     @Override
     public Chat parseResponse(String responseBody) {
@@ -71,7 +71,7 @@ public class GetPrivateChatMethod extends BotMethod<Chat> {
     /**
      * 自定义参数校验
      *
-     * @throws BotArgumentException
+     * @throws BotArgumentException client本地参数校验失败异常
      */
     @Override
     public void validate() throws BotArgumentException {

@@ -63,8 +63,8 @@ public class SetBotCommandsMethod extends BotMethod<Serializable> {
     /**
      * 使用指定的泛型实体类T解析response body
      *
-     * @param responseBody
-     * @return
+     * @param responseBody http response body
+     * @return 反序列化类型T对应的实体类
      */
     @Override
     public Serializable parseResponse(String responseBody) {
@@ -82,8 +82,8 @@ public class SetBotCommandsMethod extends BotMethod<Serializable> {
     /**
      * 根据数据传递格式，构造request body
      *
-     * @param clientProfile
-     * @return
+     * @param clientProfile 客户端环境
+     * @return 字符串格式的http request body
      */
     @Override
     protected String buildBody(ClientProfile clientProfile) {
@@ -96,7 +96,7 @@ public class SetBotCommandsMethod extends BotMethod<Serializable> {
     /**
      * 自定义参数校验
      *
-     * @throws BotArgumentException
+     * @throws BotArgumentException client本地参数校验失败异常
      */
     @Override
     public void validate() throws BotArgumentException {

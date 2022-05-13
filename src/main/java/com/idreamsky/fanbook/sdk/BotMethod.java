@@ -83,15 +83,15 @@ public abstract class BotMethod<T extends Serializable> implements Validable {
     /**
      * 使用指定的泛型实体类T解析response body
      *
-     * @param responseBody
-     * @return
+     * @param responseBody http response body
+     * @return 反序列化类型T对应的实体类
      */
     public abstract T parseResponse(String responseBody) throws BotApiRequestException;
 
     /**
      * 根据数据传递格式，构造request body
-     *
-     * @return
+     * @param clientProfile 客户端环境
+     * @return request body的字符串形式
      */
     protected String buildBody(ClientProfile clientProfile) {
         return gson.toJson(this);
@@ -100,8 +100,8 @@ public abstract class BotMethod<T extends Serializable> implements Validable {
     /**
      * 自定义构建请求头
      *
-     * @param clientProfile
-     * @return
+     * @param clientProfile 客户端环境
+     * @return k-v形式的header集合
      */
     protected Map<String, String> buildHeader(ClientProfile clientProfile) {
         this.addHeader(HTTP.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType());
@@ -111,8 +111,8 @@ public abstract class BotMethod<T extends Serializable> implements Validable {
     /**
      * 自定义构建URL变量
      *
-     * @param clientProfile
-     * @return
+     * @param clientProfile 客户端环境
+     * @return k-v形式的URL变量集合
      */
     protected Map<String, String> buildUriVariables(ClientProfile clientProfile) {
         return this.uriVariables;
@@ -121,8 +121,8 @@ public abstract class BotMethod<T extends Serializable> implements Validable {
     /**
      * 自定义构建URL
      *
-     * @param clientProfile
-     * @return
+     * @param clientProfile 客户端环境
+     * @return 字符串格式的URL
      */
     protected String buildUrl(ClientProfile clientProfile) {
         String url = String.format("%s://%s/api/bot/{bot_token}/%s", clientProfile.getHttpProtocolType(), clientProfile.getDomain(), getEndpoint());

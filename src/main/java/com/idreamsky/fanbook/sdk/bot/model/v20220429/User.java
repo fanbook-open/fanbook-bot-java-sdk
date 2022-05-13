@@ -9,12 +9,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Auto-generated: 2022-04-29 15:44:26
- *
- * @author json.cn (i@json.cn)
- * @website http://www.json.cn/java2pojo/
- */
+
 @Data
 public class User implements Serializable {
     @SerializedName("id")

@@ -48,7 +48,7 @@ public class LoginApi extends FanbookRestfulApi<UserResponse> {
      * 获取响应实体类的class；
      * PS：注意不要使用带泛型的实体类T
      *
-     * @return
+     * @return T
      */
     @Override
     public Class<UserResponse> getResponseClass() {
@@ -58,7 +58,7 @@ public class LoginApi extends FanbookRestfulApi<UserResponse> {
     /**
      * 自定义参数校验
      *
-     * @throws BotArgumentException
+     * @throws BotArgumentException client本地参数校验失败异常
      */
     @Override
     public void validate() throws BotArgumentException {

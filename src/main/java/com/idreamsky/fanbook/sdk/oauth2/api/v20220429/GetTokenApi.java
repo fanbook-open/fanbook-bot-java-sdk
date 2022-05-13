@@ -55,7 +55,7 @@ public class GetTokenApi extends FanbookRestfulApi<TokenResponse> {
      * 获取响应实体类的class；
      * PS：注意不要使用带泛型的实体类T
      *
-     * @return
+     * @return T
      */
     @Override
     public Class<TokenResponse> getResponseClass() {
@@ -65,7 +65,7 @@ public class GetTokenApi extends FanbookRestfulApi<TokenResponse> {
     /**
      * 自定义参数校验
      *
-     * @throws BotArgumentException
+     * @throws BotArgumentException client本地参数校验失败异常
      */
     @Override
     public void validate() throws BotArgumentException {
@@ -83,7 +83,7 @@ public class GetTokenApi extends FanbookRestfulApi<TokenResponse> {
     /**
      * 根据数据传递格式，构造request body
      *
-     * @return
+     * @return request body的字符串形式
      */
     @Override
     public String buildBody(ClientProfile clientProfile) {
