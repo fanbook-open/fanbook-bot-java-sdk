@@ -1,27 +1,35 @@
 package com.idreamsky.fanbook.sdk.bot.method.v20220429;
 
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import com.idreamsky.fanbook.sdk.BotClientEnum;
 import com.idreamsky.fanbook.sdk.BotMethod;
-import com.idreamsky.fanbook.sdk.bot.model.v20220429.BotCommand;
 import com.idreamsky.fanbook.sdk.exception.BotApiRequestException;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
 import com.idreamsky.fanbook.sdk.model.ApiResponse;
+import com.idreamsky.fanbook.sdk.oauth2.model.v20220429.GuildInfo;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 /**
- * 使用该方法获取当前机器人的所有命令.
+ * 获取服务器的基本信息
  *
  * @author peng.gan
  */
 @Data
 @Slf4j
-public class GetMyCommandsMethod extends BotMethod<ArrayList<BotCommand>> {
+public class GetGuildInfomationMethod extends BotMethod<GuildInfo> {
+
+    @SerializedName("user_id")
+    private String userId;
+
+    @SerializedName("guild_id")
+    private String guildId;
+
+
     /**
      * 获取接口的端点
      *
@@ -29,7 +37,7 @@ public class GetMyCommandsMethod extends BotMethod<ArrayList<BotCommand>> {
      */
     @Override
     protected String getEndpoint() {
-        return "getMyCommands";
+        return "guild";
     }
 
     /**
@@ -49,10 +57,10 @@ public class GetMyCommandsMethod extends BotMethod<ArrayList<BotCommand>> {
      * @return
      */
     @Override
-    public ArrayList<BotCommand> parseResponse(String responseBody) {
-        Type fluentType = new TypeToken<ApiResponse<ArrayList<BotCommand>>>() {
+    public GuildInfo parseResponse(String responseBody) throws BotApiRequestException {
+        Type fluentType = new TypeToken<ApiResponse<GuildInfo>>() {
         }.getType();
-        ApiResponse<ArrayList<BotCommand>> apiResponse = gson.fromJson(responseBody, fluentType);
+        ApiResponse<GuildInfo> apiResponse = gson.fromJson(responseBody, fluentType);
         if (null != apiResponse && null != apiResponse.getOk() && apiResponse.getOk()) {
             return apiResponse.getResult();
         } else if (null == apiResponse) {
@@ -71,6 +79,11 @@ public class GetMyCommandsMethod extends BotMethod<ArrayList<BotCommand>> {
      */
     @Override
     public void validate() throws BotArgumentException {
-
+        if (null == userId || userId.isEmpty()) {
+            throw new BotArgumentException("userId must not be empty");
+        }
+        if (null == guildId || guildId.isEmpty()) {
+            throw new BotArgumentException("guildId must not be empty");
+        }
     }
 }

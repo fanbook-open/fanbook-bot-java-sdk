@@ -1,7 +1,7 @@
 package com.idreamsky.fanbook.sdk.bot.method.v20220429;
 
 import com.google.gson.reflect.TypeToken;
-import com.idreamsky.fanbook.sdk.commons.BotClientEnum;
+import com.idreamsky.fanbook.sdk.BotClientEnum;
 import com.idreamsky.fanbook.sdk.BotMethod;
 import com.idreamsky.fanbook.sdk.bot.model.v20220429.User;
 import com.idreamsky.fanbook.sdk.exception.BotApiRequestException;

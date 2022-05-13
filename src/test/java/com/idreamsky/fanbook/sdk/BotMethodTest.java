@@ -386,6 +386,16 @@ public class BotMethodTest {
         log.info("botResponse:{}", new Gson().toJson(botResponse));
         Map<UpdateTypeEnum, List<Update>> updateTypeEnumListMap = UpdateUtil.messageGroup(botResponse);
         log.info("UpdateGroup:{}", new Gson().toJson(updateTypeEnumListMap));
+    }
+
+
+    @Test
+    public void testGetGuildInfomationMethod(){
+        GetGuildInfomationMethod getGuildInfomationMethod = new GetGuildInfomationMethod();
+        getGuildInfomationMethod.setGuildId("357042844231282688");
+        getGuildInfomationMethod.setUserId("1");
+        Serializable botResponse = fanbookClient.getBotResponse(getGuildInfomationMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
 
     }
 }

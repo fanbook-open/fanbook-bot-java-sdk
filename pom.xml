@@ -2,29 +2,42 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.idreamsky.fanbook</groupId>
+    <groupId>io.github.fanbook-open</groupId>
     <artifactId>fanbook-bot-sdk</artifactId>
-    <version>0.0.1.RELEASE</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <name>fanbook-bot-sdk</name>
+    <url>https://open.fanbook.mobi</url>
+    <description>a SDK For Fanbook Bot</description>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/fanbook-open/fanbook-bot-java-sdk</url>
+        <connection>https://github.com/fanbook-open/fanbook-bot-java-sdk.git</connection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>idreamsky</name>
+            <email>peng.gan@idreamsky.com</email>
+            <url>https://fanbook.idreamsky.com/</url>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
 
     <properties>
         <java.version>8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
-    <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>VM_88_49_centos-releases</name>
-            <url>http://artifactory.uu.cc:80/ms-maven-releases-local</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>VM_88_49_centos-snapshots</name>
-            <url>http://artifactory.uu.cc:80/ms-maven-snapshots-local</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -126,5 +139,69 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>ossrh</id>
+            <distributionManagement>
+                <repository>
+                    <id>releases</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>snapshots</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                </snapshotRepository>
+
+            </distributionManagement>
+            <build>
+                <defaultGoal>compile</defaultGoal>
+                <plugins>
+                    <!-- Source -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Javadoc -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Gpg Signature -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

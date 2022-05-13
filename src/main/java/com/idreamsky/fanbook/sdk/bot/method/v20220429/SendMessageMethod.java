@@ -2,7 +2,7 @@ package com.idreamsky.fanbook.sdk.bot.method.v20220429;
 
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-import com.idreamsky.fanbook.sdk.commons.BotClientEnum;
+import com.idreamsky.fanbook.sdk.BotClientEnum;
 import com.idreamsky.fanbook.sdk.BotMethod;
 import com.idreamsky.fanbook.sdk.bot.model.v20220429.InlineKeyboardMarkup;
 import com.idreamsky.fanbook.sdk.bot.model.v20220429.Message;
@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 接口使用该消息可以发送一些文本消息，包括富文本和动态卡片. 成功后返回 Message 对象.
