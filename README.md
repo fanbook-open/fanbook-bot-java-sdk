@@ -25,7 +25,7 @@ Maven GAV
 自行编译源码
 
 ```
-git clone http://git.ids111.com/idreamsky/platform/frontend/fanbook-bot-sdk.git
+git clone https://github.com/fanbook-open/fanbook-bot-java-sdk.git
 cd fanbook-bot-sdk
 mvn clean package -Dmaven.test.skip=true
 ```
