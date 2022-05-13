@@ -14,12 +14,9 @@ Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/ma
 ## 引入工具包
 
 Maven GAV
-
-需要使用Idreamsky的Maven私服
-
 ```
 <dependency>
-    <groupId>com.idreamsky.fanbook</groupId>
+    <groupId>io.github.fanbook-open</groupId>
     <artifactId>fanbook-bot-sdk</artifactId>
     <version>${latest.version}</version>
 </dependency>
