@@ -1,6 +1,7 @@
 package com.idreamsky.fanbook.sdk;
 
 import com.google.gson.Gson;
+import com.idreamsky.fanbook.sdk.bot.constant.v20220429.ChannelTypeEnum;
 import com.idreamsky.fanbook.sdk.bot.method.v20220429.*;
 import com.idreamsky.fanbook.sdk.bot.model.v20220429.*;
 import com.idreamsky.fanbook.sdk.profile.ClientProfile;
@@ -28,7 +29,7 @@ public class BotMethodTest {
         clientProfile.setBotToken("f2da539e8bb6db83073eec155809e449adfdaee4a3d012750c6aa3b8beb6d1d48d64ff6092879c88536af3e53249d61f");
         clientProfile.setClientKey("356994553305239552");
         clientProfile.setClientSecret("9UxLpq6EKj6vpwpT6kJrafyhOJW4L6Wd");
-        clientProfile.setBotId(358193373657432064L);
+        clientProfile.setBotId(356997871750348800L);
         fanbookClient = new DefaultFanbookBotClient(clientProfile);
     }
 
@@ -390,12 +391,34 @@ public class BotMethodTest {
 
 
     @Test
-    public void testGetGuildInfomationMethod(){
+    public void testGetGuildInfomationMethod() {
         GetGuildInfomationMethod getGuildInfomationMethod = new GetGuildInfomationMethod();
         getGuildInfomationMethod.setGuildId("357042844231282688");
         getGuildInfomationMethod.setUserId("1");
         Serializable botResponse = fanbookClient.getBotResponse(getGuildInfomationMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
 
+    }
+
+    @Test
+    public void testCreateChannelMethod() {
+        CreateChannelMethod createChannelMethod = new CreateChannelMethod();
+        createChannelMethod.setUserId("356997871750348800");
+        createChannelMethod.setGuildId("357042844231282688");
+        createChannelMethod.setName("测试频道");
+        createChannelMethod.setType(ChannelTypeEnum.LinkChannel.getId());
+        createChannelMethod.setLink("http://www.baidu.com");
+        createChannelMethod.setParentId("357042844390653952");
+        Serializable botResponse = fanbookClient.getBotResponse(createChannelMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
+    }
+
+    @Test
+    public void testListChannelMethod() {
+        ListChannelMethod listChannelMethod = new ListChannelMethod();
+        listChannelMethod.setUserId("356997871750348800");
+        listChannelMethod.setGuildId("357042844231282688");
+        Serializable botResponse = fanbookClient.getBotResponse(listChannelMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
 }
