@@ -28,7 +28,7 @@ Maven GAV
 
 ```
 git clone https://github.com/fanbook-open/fanbook-bot-java-sdk.git
-cd fanbook-bot-sdk
+cd fanbook-bot-java-sdk
 mvn clean package -Dmaven.test.skip=true
 ```
 
