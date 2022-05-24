@@ -9,8 +9,8 @@ import java.util.List;
 @Data
 public class GuildInfo implements Serializable {
 
-    @SerializedName("guildId")
-    private String guild_id;
+    @SerializedName("guild_id")
+    private String guildId;
 
     @SerializedName("name")
     private String name;
