@@ -50,9 +50,9 @@ public class HttpClientFactory {
             public void run() {
                 //关闭异常连接
                 manager.closeExpiredConnections();
-                //关闭5s空闲的连接
+                //关闭s空闲的连接
                 manager.closeIdleConnections(httpConfig.getMaxIdleTimeMillis(), TimeUnit.MILLISECONDS);
-                logger.info("close expired and idle for over 5s connection");
+                logger.info("close expired and idle for over {}s connection", httpConfig.getMaxIdleTimeMillis() / 1000);
             }
         }, 30 * 1000, 30 * 1000, TimeUnit.MILLISECONDS);
         final int maxRetryCount = httpConfig.getMaxRetryCount();

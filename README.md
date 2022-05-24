@@ -10,6 +10,7 @@ Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/ma
 | --- | --- | --- | --- |
 | 0.0.1 | 2022-05-09 | peng.gan | 第一个版本的Fanbook Bot Java SDK。包含大部分常用的Bot API和Oauth2 API。 |
 | 0.0.2.RELEASE | 2022-05-18 | peng.gan | 新增两个频道接口 |
+| 0.0.3.RELEASE | 2022-05-24 | peng.gan | 修正错误 |
 
 
 ## 引入工具包

@@ -421,4 +421,15 @@ public class BotMethodTest {
         Serializable botResponse = fanbookClient.getBotResponse(listChannelMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
+
+    @Test
+    public void testCreateRoleMethod(){
+        CreateRoleMethod createRoleMethod = new CreateRoleMethod();
+        createRoleMethod.setGuildId("357042844231282688");
+        createRoleMethod.setName("小蜜蜂");
+        createRoleMethod.setColor(1);
+        createRoleMethod.setPosition(0L);
+        GuildRole botResponse = fanbookClient.getBotResponse(createRoleMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
+    }
 }
