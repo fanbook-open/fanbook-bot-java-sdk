@@ -113,4 +113,12 @@ public class SetBotCommandsMethod extends BotMethod<Serializable> {
             throw new BotArgumentException("authorization of Fanbook Client must not be null");
         }
     }
+    @Override
+    protected String buildUrl(ClientProfile clientProfile) {
+        String url = String.format("%s://%s/%s", clientProfile.getHttpProtocolType(), clientProfile.getDomain(), getEndpoint());
+        if (url.contains(BOT_TOKEN_PLACE_HOLDER)) {
+            url = url.replace(BOT_TOKEN_PLACE_HOLDER, clientProfile.getBotToken());
+        }
+        return url;
+    }
 }

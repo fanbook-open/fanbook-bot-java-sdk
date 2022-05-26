@@ -71,4 +71,5 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
         return httpClient.doInvoke(httpRequest);
     }
 
+
 }
