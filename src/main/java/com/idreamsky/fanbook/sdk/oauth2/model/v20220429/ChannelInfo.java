@@ -1,9 +1,11 @@
 package com.idreamsky.fanbook.sdk.oauth2.model.v20220429;
 
 import com.google.gson.annotations.SerializedName;
+import com.idreamsky.fanbook.sdk.bot.model.v20220429.PermissionOverwrite;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 public class ChannelInfo implements Serializable {
@@ -21,5 +23,8 @@ public class ChannelInfo implements Serializable {
 
     @SerializedName("user_limit")
     private Long userLimit;
+
+    @SerializedName("permission_overwrites")
+    private List<PermissionOverwrite> permissionOverwrites;
 
 }

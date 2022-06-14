@@ -15,6 +15,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 /**
  * 创建频道
@@ -50,7 +51,7 @@ public class CreateChannelMethod extends BotMethod<ChannelInfo> {
     private String link;
 
     @SerializedName("permission_overwrites")
-    private PermissionOverwrite permissionOverwrites;
+    private List<PermissionOverwrite> permissionOverwrites;
 
     @Override
     protected String getEndpoint() {

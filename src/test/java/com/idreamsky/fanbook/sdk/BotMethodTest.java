@@ -405,10 +405,14 @@ public class BotMethodTest {
         CreateChannelMethod createChannelMethod = new CreateChannelMethod();
         createChannelMethod.setUserId("356997871750348800");
         createChannelMethod.setGuildId("357042844231282688");
-        createChannelMethod.setName("测试频道");
-        createChannelMethod.setType(ChannelTypeEnum.LinkChannel.getId());
+        createChannelMethod.setName("私聊频道");
+        createChannelMethod.setType(ChannelTypeEnum.TextChannel.getId());
         createChannelMethod.setLink("http://www.baidu.com");
         createChannelMethod.setParentId("357042844390653952");
+        // ""
+        createChannelMethod.setPermissionOverwrites(Arrays.asList(PermissionOverwrite.builder().id("173022860380475392").actionType("user").allows(1024).deny(0).build(),
+                PermissionOverwrite.builder().id("233558858419671040").actionType("user").allows(1024).deny(0).build(),
+                PermissionOverwrite.builder().id("357042844281614336").actionType("role").allows(0).deny(1024).build()));
         Serializable botResponse = fanbookClient.getBotResponse(createChannelMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
