@@ -22,4 +22,23 @@ public class GuildRole implements Serializable {
 
     @SerializedName("color")
     private Integer color;
+
+    @SerializedName("mentionable")
+    private Boolean mentionable;
+
+    @SerializedName("member_count")
+    private Long memberCount;
+
+    @SerializedName("managed")
+    private Boolean managed;
+
+    @SerializedName("tag")
+    private Tag tag;
+
+    @Data
+    public static class Tag implements Serializable {
+
+        @SerializedName("bot_id")
+        private String botId;
+    }
 }

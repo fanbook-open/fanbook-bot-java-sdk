@@ -74,7 +74,7 @@ public class BotMethodTest {
     public void testGetBotsMethod() {
         GetBotsMethod getBotsMethod = new GetBotsMethod();
         getBotsMethod.setOwnerId(173022860380475392L);
-        getBotsMethod.setAuthorization("c912b6f823d925c25d14e8855c04ef5b4b2cd3b71c78476fdd6af1f67f50b170a8d82f93620d5ab113c6f3cb7e42c145e5b23ad503263afe192948ef5a8efb2865675c56a3e4b445e6a4f86387842315a080cb2a7528754f82f66efcd8161c44");
+        getBotsMethod.setAuthorization("c912b6f823d925c25d14e8855c04ef5b4b2cd3b71c78476fdd6af1f67f50b170a8d82f93620d5ab113c6f3cb7e42c1453dfba0007834b0c0dc7a40053f9be4024a48192747823da6c7cd73f60adf16fb7ca613ff9976e20beec09812abc782c2");
         ArrayList<Bot> botResponse = fanbookClient.getBotResponse(getBotsMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
@@ -85,7 +85,7 @@ public class BotMethodTest {
         SetBotPrivacyModeMethod setBotPrivacyModeMethod = new SetBotPrivacyModeMethod();
         setBotPrivacyModeMethod.setBotId(358193373657432064L);
         setBotPrivacyModeMethod.setOwnerId(173022860380475392L);
-        setBotPrivacyModeMethod.setAuthorization("c912b6f823d925c25d14e8855c04ef5b4b2cd3b71c78476fdd6af1f67f50b170a8d82f93620d5ab113c6f3cb7e42c145e5b23ad503263afe192948ef5a8efb2865675c56a3e4b445e6a4f86387842315a080cb2a7528754f82f66efcd8161c44");
+        setBotPrivacyModeMethod.setAuthorization("c912b6f823d925c25d14e8855c04ef5b4b2cd3b71c78476fdd6af1f67f50b170a8d82f93620d5ab113c6f3cb7e42c1453dfba0007834b0c0dc7a40053f9be4024a48192747823da6c7cd73f60adf16fb7ca613ff9976e20beec09812abc782c2");
         setBotPrivacyModeMethod.setEnable(true);
         Serializable botResponse = fanbookClient.getBotResponse(setBotPrivacyModeMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
@@ -405,10 +405,14 @@ public class BotMethodTest {
         CreateChannelMethod createChannelMethod = new CreateChannelMethod();
         createChannelMethod.setUserId("356997871750348800");
         createChannelMethod.setGuildId("357042844231282688");
-        createChannelMethod.setName("测试频道");
-        createChannelMethod.setType(ChannelTypeEnum.LinkChannel.getId());
+        createChannelMethod.setName("私聊频道");
+        createChannelMethod.setType(ChannelTypeEnum.TextChannel.getId());
         createChannelMethod.setLink("http://www.baidu.com");
         createChannelMethod.setParentId("357042844390653952");
+        // ""
+        createChannelMethod.setPermissionOverwrites(Arrays.asList(PermissionOverwrite.builder().id("173022860380475392").actionType("user").allows(1024).deny(0).build(),
+                PermissionOverwrite.builder().id("233558858419671040").actionType("user").allows(1024).deny(0).build(),
+                PermissionOverwrite.builder().id("357042844281614336").actionType("role").allows(0).deny(1024).build()));
         Serializable botResponse = fanbookClient.getBotResponse(createChannelMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }

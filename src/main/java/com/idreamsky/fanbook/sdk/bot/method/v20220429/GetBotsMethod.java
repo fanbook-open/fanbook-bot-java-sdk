@@ -9,6 +9,7 @@ import com.idreamsky.fanbook.sdk.exception.BotApiRequestException;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
 import com.idreamsky.fanbook.sdk.model.RestResponse;
+import com.idreamsky.fanbook.sdk.profile.ClientProfile;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -83,5 +84,13 @@ public class GetBotsMethod extends BotMethod<ArrayList<Bot>> {
         if (null == headers.get(HEADER_AUTHORIZATION) || headers.get(HEADER_AUTHORIZATION).isEmpty()) {
             throw new BotArgumentException("authorization of Fanbook Client must not be null");
         }
+    }
+    @Override
+    protected String buildUrl(ClientProfile clientProfile) {
+        String url = String.format("%s://%s/%s", clientProfile.getHttpProtocolType(), clientProfile.getDomain(), getEndpoint());
+        if (url.contains(BOT_TOKEN_PLACE_HOLDER)) {
+            url = url.replace(BOT_TOKEN_PLACE_HOLDER, clientProfile.getBotToken());
+        }
+        return url;
     }
 }
