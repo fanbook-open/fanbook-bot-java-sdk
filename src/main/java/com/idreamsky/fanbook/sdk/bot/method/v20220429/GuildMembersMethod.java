@@ -25,6 +25,10 @@ import java.util.List;
  */
 @Data
 @Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+// FIXME 接口有误
 public class GuildMembersMethod extends BotMethod {
 
 

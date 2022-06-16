@@ -4,7 +4,11 @@ import com.idreamsky.fanbook.sdk.FanbookRestfulApi;
 import com.idreamsky.fanbook.sdk.oauth2.model.v20220429.GuildsResponse;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 获取个人服务器列表
@@ -12,6 +16,7 @@ import lombok.Data;
  * @author peng.gan
  */
 @Data
+@Slf4j
 public class GetGuildsApi extends FanbookRestfulApi<GuildsResponse> {
 
     public void setAccessToken(String accessToken) {

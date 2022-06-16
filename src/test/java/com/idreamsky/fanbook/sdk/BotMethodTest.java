@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.idreamsky.fanbook.sdk.bot.constant.v20220429.ChannelTypeEnum;
 import com.idreamsky.fanbook.sdk.bot.method.v20220429.*;
 import com.idreamsky.fanbook.sdk.bot.model.v20220429.*;
+import com.idreamsky.fanbook.sdk.oauth2.model.v20220429.ChannelInfo;
 import com.idreamsky.fanbook.sdk.profile.ClientProfile;
 import com.idreamsky.fanbook.sdk.support.UpdateUtil;
 import com.idreamsky.fanbook.sdk.support.constant.UpdateTypeEnum;
@@ -434,6 +435,23 @@ public class BotMethodTest {
         createRoleMethod.setColor(1);
         createRoleMethod.setPosition(0L);
         GuildRole botResponse = fanbookClient.getBotResponse(createRoleMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
+    }
+
+    @Test
+    public void testEditChannelMethod(){
+        List<PermissionOverwrite> permissionOverwrites = Arrays.asList(PermissionOverwrite.builder().id("173022860380475392").actionType("user").allows(1024).deny(0).build(),
+                PermissionOverwrite.builder().id("233558858419671040").actionType("user").allows(1024).deny(0).build(),
+                PermissionOverwrite.builder().id("357042844281614336").actionType("role").allows(0).deny(1024).build());
+        EditChannelMethod editChannelMethod = EditChannelMethod.builder()
+                .channelId("377429008150691840")
+                .userId(clientProfile.getBotId().toString())
+                .guildId("357042844231282688")
+                .name("不私秘频道")
+                .icon("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Video-Game-Controller-Icon-IDV-green.svg/249px-Video-Game-Controller-Icon-IDV-green.svg.png")
+                .permissionOverwrites(permissionOverwrites)
+                .build();
+        String botResponse = fanbookClient.getBotResponse(editChannelMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
 }

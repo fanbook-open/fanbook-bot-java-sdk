@@ -6,7 +6,11 @@ import com.idreamsky.fanbook.sdk.oauth2.model.v20220429.AppResponse;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
 import com.idreamsky.fanbook.sdk.profile.ClientProfile;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 
@@ -15,6 +19,10 @@ import java.util.Map;
  * @author peng.gan
  */
 @Data
+@Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class AppApi extends FanbookRestfulApi<AppResponse> {
 
     /**

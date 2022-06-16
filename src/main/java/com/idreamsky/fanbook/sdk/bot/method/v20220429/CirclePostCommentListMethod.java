@@ -5,7 +5,10 @@ import com.idreamsky.fanbook.sdk.BotMethod;
 import com.idreamsky.fanbook.sdk.exception.BotApiRequestException;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
@@ -17,6 +20,9 @@ import java.io.Serializable;
  */
 @Data
 @Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 // FIXME 接口没调通
 public class CirclePostCommentListMethod extends BotMethod {
 

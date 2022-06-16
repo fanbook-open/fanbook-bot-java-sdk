@@ -6,7 +6,10 @@ import com.idreamsky.fanbook.sdk.oauth2.model.v20220429.TokenResponse;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
 import com.idreamsky.fanbook.sdk.profile.ClientProfile;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.entity.ContentType;
 import org.apache.http.protocol.HTTP;
@@ -18,8 +21,11 @@ import java.util.Map;
  *
  * @author peng.gan
  */
-@Slf4j
 @Data
+@Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class GetTokenApi extends FanbookRestfulApi<TokenResponse> {
 
     @SerializedName("grant_type")
