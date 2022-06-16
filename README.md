@@ -44,7 +44,7 @@ mvn clean package -Dmaven.test.skip=true
     clientProfile.setClientKey(clientID);
     clientProfile.setClientSecret(clientSecret);
     clientProfile.setBotToken(botToken);
-    clientProfile.setBoeOf(botId));
+    clientProfile.setBotId(botId));
     IFanbookBotClient client = new DefaultFanbookBotClient(clientProfile);
     return client;
 ```
