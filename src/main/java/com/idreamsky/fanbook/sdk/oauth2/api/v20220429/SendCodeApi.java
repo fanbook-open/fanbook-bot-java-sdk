@@ -5,7 +5,10 @@ import com.idreamsky.fanbook.sdk.FanbookRestfulApi;
 import com.idreamsky.fanbook.sdk.oauth2.model.v20220429.SendCodeResponse;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -15,6 +18,9 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Data
 @Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class SendCodeApi extends FanbookRestfulApi<SendCodeResponse> {
 
     @SerializedName("mobile")

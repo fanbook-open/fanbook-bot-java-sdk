@@ -8,7 +8,10 @@ import com.idreamsky.fanbook.sdk.exception.BotApiRequestException;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
 import com.idreamsky.fanbook.sdk.model.ApiResponse;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Type;
@@ -18,8 +21,8 @@ import java.lang.reflect.Type;
  *
  * @author peng.gan
  */
-@Slf4j
 @Data
+@Slf4j
 public class GetMeMethod extends BotMethod<User> {
     /**
      * 获取接口的端点

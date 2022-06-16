@@ -5,7 +5,11 @@ import com.idreamsky.fanbook.sdk.FanbookRestfulApi;
 import com.idreamsky.fanbook.sdk.oauth2.model.v20220429.UserResponse;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 用户登陆
@@ -13,6 +17,10 @@ import lombok.Data;
  * @author peng.gan
  */
 @Data
+@Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class LoginApi extends FanbookRestfulApi<UserResponse> {
 
     @SerializedName("mobile")

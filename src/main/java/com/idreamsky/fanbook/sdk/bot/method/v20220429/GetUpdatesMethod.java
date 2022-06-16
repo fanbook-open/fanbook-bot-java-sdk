@@ -9,7 +9,10 @@ import com.idreamsky.fanbook.sdk.exception.BotApiRequestException;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
 import com.idreamsky.fanbook.sdk.model.ApiResponse;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Type;
@@ -28,6 +31,9 @@ import java.util.List;
  */
 @Data
 @Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class GetUpdatesMethod extends BotMethod<ArrayList<Update>> {
 
     @SerializedName("offset")
