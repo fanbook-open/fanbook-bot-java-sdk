@@ -96,4 +96,11 @@ public class Oauth2ApiTest {
         LinkResponse botResponse = fanbookClient.getBotResponse(linkApi);
         log.info("apiResponse:{}", new Gson().toJson(botResponse));
     }
+
+    @Test
+    public void testInviteCodeApi(){
+        InviteCodeApi inviteCodeApi = InviteCodeApi.builder().c("3NDh5FIi").build();
+        InviteCodeResponse botResponse = fanbookClient.getBotResponse(inviteCodeApi);
+        log.info("apiResponse:{}", new Gson().toJson(botResponse));
+    }
 }
