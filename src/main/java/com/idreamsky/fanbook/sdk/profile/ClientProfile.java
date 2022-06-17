@@ -3,7 +3,11 @@ package com.idreamsky.fanbook.sdk.profile;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpConfig;
 import com.idreamsky.fanbook.sdk.interfaces.Validable;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * fanbook SDK 客户端配置参数
@@ -11,6 +15,10 @@ import lombok.Data;
  * @author peng.gan
  */
 @Data
+@Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ClientProfile implements Validable {
 
     /**

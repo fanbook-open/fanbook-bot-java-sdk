@@ -1,6 +1,10 @@
 package com.idreamsky.fanbook.sdk.http;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * http请求参数配置项
@@ -8,6 +12,10 @@ import lombok.Data;
  * @author peng.gan
  */
 @Data
+@Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class HttpConfig {
 
     private int connectTimeout = 10000;
