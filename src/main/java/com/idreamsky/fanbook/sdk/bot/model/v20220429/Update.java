@@ -24,23 +24,23 @@ public class Update implements Serializable {
     private Message editedChannelPost;
 
     @SerializedName("inline_query")
-    private Object inlineQuery;
+    private InlineQuery inlineQuery;
 
     @SerializedName("chosen_inline_result")
-    private Object chosenInlineResult;
+    private ChosenInlineQuery chosenInlineResult;
 
     @SerializedName("callback_query")
-    private Object callbackQuery;
+    private CallbackQuery callbackQuery;
 
     @SerializedName("shipping_query")
-    private Object shippingQuery;
+    private ShippingQuery shippingQuery;
 
     @SerializedName("pre_checkout_query")
-    private Object preCheckoutQuery;
+    private PreCheckoutQuery preCheckoutQuery;
 
     @SerializedName("poll")
-    private Object poll;
+    private Poll poll;
 
     @SerializedName("poll_answer")
-    private Object pollAnswer;
+    private PollAnswer pollAnswer;
 }
