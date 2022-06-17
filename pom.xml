@@ -4,7 +4,7 @@
 
     <groupId>io.github.fanbook-open</groupId>
     <artifactId>fanbook-bot-sdk</artifactId>
-    <version>0.0.6.RELEASE</version>
+    <version>0.0.7.RELEASE</version>
     <packaging>jar</packaging>
     <name>fanbook-bot-sdk</name>
     <url>https://open.fanbook.mobi</url>

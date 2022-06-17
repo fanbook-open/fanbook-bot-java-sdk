@@ -14,6 +14,7 @@ Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/ma
 | 0.0.4.RELEASE | 2022-06-14 | peng.gan | GuildRole新增多个字段；修改部分接口路径错误的bug |
 | 0.0.5.RELEASE | 2022-06-15 | peng.gan | channel增加对象;修改部分接口路径错误的bug |
 | 0.0.6.RELEASE | 2022-06-16 | peng.gan | 增加修改频道接口;接口实现构造模式 |
+| 0.0.7.RELEASE | 2022-06-17 | peng.gan | Update对象增加多个Java Bean |
 
 
 ## 引入工具包
