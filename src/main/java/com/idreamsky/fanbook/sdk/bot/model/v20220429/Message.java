@@ -76,6 +76,9 @@ public class Message implements Serializable {
     @SerializedName("sticker")
     private Sticker sticker;
 
+    @SerializedName("video")
+    private Video video;
+
     @SerializedName("video_note")
     private VideoNote videoNote;
 
@@ -150,6 +153,18 @@ public class Message implements Serializable {
 
     @SerializedName("rich_text")
     private Map richText;
+
+    @SerializedName("circle_post")
+    private CirclePostContent circlePost;
+
+    @SerializedName("circle_comment")
+    private CircleComment circleComment;
+
+    @SerializedName("circle_like")
+    private CircleLike circleLike;
+
+    @SerializedName("topic_share")
+    private Object topicShare;
 
     @SerializedName("circle_share_entity")
     private CircleShareEntity circleShareEntity;

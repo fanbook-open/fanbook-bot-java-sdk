@@ -16,6 +16,7 @@ Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/ma
 | 0.0.6.RELEASE | 2022-06-16 | peng.gan | 增加修改频道接口;接口实现构造模式 |
 | 0.0.7.RELEASE | 2022-06-17 | peng.gan | Update对象增加多个Java Bean |
 | 0.0.8.RELEASE | 2022-06-21 | peng.gan | 新增DeleteChannelMethod和ExistsMemberMethod接口 |
+| 0.0.9.RELEASE | 2022-06-21 | peng.gan | Message对象新增三个圈子相关变量;UpdateUtil增加枚举类型 |
 
 
 ## 引入工具包
