@@ -50,4 +50,13 @@ public class GuildInfo implements Serializable {
 
     @SerializedName("notification_channel_id")
     private String notificationChannelId;
+
+    @SerializedName("authenticate")
+    private String authenticate;
+
+    @SerializedName("invite_banner")
+    private Boolean invite_banner;
+
+    @SerializedName("memberNum")
+    private Long memberNum;
 }

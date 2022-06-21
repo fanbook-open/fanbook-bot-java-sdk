@@ -23,4 +23,7 @@ public class UserInfo implements Serializable {
     @SerializedName("token")
     private String token;
 
+    @SerializedName("avatar_nft")
+    private Boolean avatarNft;
+
 }

@@ -454,4 +454,22 @@ public class BotMethodTest {
         String botResponse = fanbookClient.getBotResponse(editChannelMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
+
+    @Test
+    public void testDeleteChannelMethod(){
+        DeleteChannelMethod deleteChannelMethod = DeleteChannelMethod.builder()
+                .channelId("377429008150691840")
+                .userId(clientProfile.getBotId().toString())
+                .guildId("357042844231282688")
+                .build();
+        String botResponse = fanbookClient.getBotResponse(deleteChannelMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
+    }
+
+    @Test
+    public void testExistsMemberMethod(){
+        ExistsMemberMethod existsMemberMethod = ExistsMemberMethod.builder().guildId("357042844231282688").memberId("").build();
+        Exists botResponse = fanbookClient.getBotResponse(existsMemberMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
+    }
 }
