@@ -42,7 +42,9 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
     }
 
     private <T extends Serializable> T parseBotResponse(BotMethod<T> botMethod, HttpResponse httpResponse) {
-        log.info("Bot [{}] api response is :{}", botMethod.getClass().getSimpleName(), httpResponse.getResponseBody());
+        if (log.isInfoEnabled()) {
+            log.info("Bot [{}] api response is :{}", botMethod.getClass().getSimpleName(), httpResponse.getResponseBody());
+        }
         return botMethod.parseResponse(httpResponse.getResponseBody());
     }
 

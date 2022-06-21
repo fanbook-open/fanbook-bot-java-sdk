@@ -27,10 +27,10 @@ public class BotMethodTest {
     @Before
     public void init() {
         clientProfile = ClientProfile.getDefaultProfile();
-        clientProfile.setBotToken("f2da539e8bb6db83073eec155809e449adfdaee4a3d012750c6aa3b8beb6d1d48d64ff6092879c88536af3e53249d61f");
-        clientProfile.setClientKey("356994553305239552");
-        clientProfile.setClientSecret("9UxLpq6EKj6vpwpT6kJrafyhOJW4L6Wd");
-        clientProfile.setBotId(356997871750348800L);
+        clientProfile.setBotToken("cd453a88daea352705e7f378535ad1d73a5897aa110cc39d35e1ff0778e6c0046977e76874142bd4666d0764c887712a");
+        clientProfile.setClientKey("379899109508780032");
+        clientProfile.setClientSecret("mpuM7LcaN8x6Aj9vvLOhLBmSozpTU3Lc");
+        clientProfile.setBotId(379899470315257856L);
         fanbookClient = new DefaultFanbookBotClient(clientProfile);
     }
 
@@ -86,7 +86,7 @@ public class BotMethodTest {
         SetBotPrivacyModeMethod setBotPrivacyModeMethod = new SetBotPrivacyModeMethod();
         setBotPrivacyModeMethod.setBotId(358193373657432064L);
         setBotPrivacyModeMethod.setOwnerId(173022860380475392L);
-        setBotPrivacyModeMethod.setAuthorization("c912b6f823d925c25d14e8855c04ef5b4b2cd3b71c78476fdd6af1f67f50b170a8d82f93620d5ab113c6f3cb7e42c1453dfba0007834b0c0dc7a40053f9be4024a48192747823da6c7cd73f60adf16fb7ca613ff9976e20beec09812abc782c2");
+        setBotPrivacyModeMethod.setAuthorization("c912b6f823d925c25d14e8855c04ef5b4b2cd3b71c78476fdd6af1f67f50b170a8d82f93620d5ab113c6f3cb7e42c1459102c6c8b7b59e00ca97812b3177286d997eceaaacae9611ef4d008d1630f608ac02ace3a7d3c2b283c1df82d11093b8");
         setBotPrivacyModeMethod.setEnable(true);
         Serializable botResponse = fanbookClient.getBotResponse(setBotPrivacyModeMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));

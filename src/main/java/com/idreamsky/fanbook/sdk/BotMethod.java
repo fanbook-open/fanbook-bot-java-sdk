@@ -75,7 +75,9 @@ public abstract class BotMethod<T extends Serializable> implements Validable {
         httpRequest.setUriVariables(this.buildUriVariables(clientProfile));
         httpRequest.setHeaders(this.buildHeader(clientProfile));
         httpRequest.setBody(this.buildBody(clientProfile));
-        log.info("[{}] api request is:{}", this.getClass().getSimpleName(), gson.toJson(httpRequest));
+        if (log.isInfoEnabled()) {
+            log.info("[{}] api request is:{}", this.getClass().getSimpleName(), gson.toJson(httpRequest));
+        }
         return httpRequest;
     }
 
