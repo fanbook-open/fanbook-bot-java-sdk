@@ -70,10 +70,10 @@ public class DeleteMessageMethod extends BotMethod<Boolean> {
         if (null != apiResponse && null != apiResponse.getOk() && apiResponse.getOk()) {
             return apiResponse.getResult();
         } else if (null == apiResponse) {
-            log.info("Fanbook bot api 接口响应非成功数据,body:{}", responseBody);
+            log.error("Fanbook bot api 接口响应非成功数据,body:{}", responseBody);
             throw new BotApiRequestException(BotClientEnum.FAIL.getCode(), BotClientEnum.FAIL.getDesc());
         } else {
-            log.info("Fanbook bot api 接口响应非成功数据,body:{}", responseBody);
+            log.error("Fanbook bot api 接口响应非成功数据,body:{}", responseBody);
             throw new BotApiRequestException(apiResponse.getErrorCode(), apiResponse.getDescription());
         }
     }
