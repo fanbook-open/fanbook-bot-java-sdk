@@ -80,7 +80,7 @@ public class SetBotCommandsMethod extends BotMethod<Serializable> {
         if (null != apiResponse && null != apiResponse.getStatus() && apiResponse.getStatus()) {
             return apiResponse.getStatus();
         } else {
-            log.info("Fanbook bot api 接口响应非成功数据,body:{}", responseBody);
+            log.error("Fanbook bot api 接口响应非成功数据,body:{}", responseBody);
             throw new BotApiRequestException(BotClientEnum.FAIL.getCode(), BotClientEnum.FAIL.getDesc());
         }
     }
