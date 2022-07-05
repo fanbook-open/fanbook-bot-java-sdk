@@ -2,10 +2,7 @@ package com.idreamsky.fanbook.sdk;
 
 import com.google.gson.Gson;
 import com.idreamsky.fanbook.sdk.exception.BotClientException;
-import com.idreamsky.fanbook.sdk.http.HttpClientAdapter;
-import com.idreamsky.fanbook.sdk.http.HttpClientFactory;
-import com.idreamsky.fanbook.sdk.http.HttpRequest;
-import com.idreamsky.fanbook.sdk.http.HttpResponse;
+import com.idreamsky.fanbook.sdk.http.*;
 import com.idreamsky.fanbook.sdk.profile.ClientProfile;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpStatus;
@@ -24,10 +21,16 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
 
     private HttpClientAdapter httpClient;
 
+    private HttpClientAdapter longPollingHttpClient;
+
     public DefaultFanbookBotClient(ClientProfile clientProfile) {
         clientProfile.validate();
         this.clientProfile = clientProfile;
-        this.httpClient = HttpClientFactory.create(this.clientProfile);
+        this.httpClient = HttpClientFactory.create(this.clientProfile.getHttpConfig());
+        HttpConfig updatesHttpConfig = new HttpConfig();
+        updatesHttpConfig.setSocketTimeout(120 * 1000);
+        this.longPollingHttpClient = HttpClientFactory.create(updatesHttpConfig);
+
     }
 
 
@@ -70,7 +73,11 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
      */
     @Override
     public <T extends Serializable> HttpResponse doInvoke(HttpRequest httpRequest) {
-        return httpClient.doInvoke(httpRequest);
+        if (httpRequest.getLongPooling()) {
+            return longPollingHttpClient.doInvoke(httpRequest);
+        } else {
+            return httpClient.doInvoke(httpRequest);
+        }
     }
 
 

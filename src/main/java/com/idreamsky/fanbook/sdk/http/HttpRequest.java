@@ -20,4 +20,6 @@ public class HttpRequest {
 
     private Map<String, String> uriVariables;
 
+    private Boolean longPooling = false;
+
 }

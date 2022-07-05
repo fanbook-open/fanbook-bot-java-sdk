@@ -27,9 +27,9 @@ public class BotMethodTest {
     @Before
     public void init() {
         clientProfile = ClientProfile.getDefaultProfile();
-        clientProfile.setBotToken("cd453a88daea352705e7f378535ad1d73a5897aa110cc39d35e1ff0778e6c0046977e76874142bd4666d0764c887712a");
-        clientProfile.setClientKey("379899109508780032");
-        clientProfile.setClientSecret("mpuM7LcaN8x6Aj9vvLOhLBmSozpTU3Lc");
+        clientProfile.setBotToken("249732ee451de5551db07b0d9f1780f67b2bb204c542a2c8a164f02e0d02ec71c7d0ecb4f89b8051326a8026d5be5851");
+        clientProfile.setClientKey("384905094069620736");
+        clientProfile.setClientSecret("5A0aq9ek3sFPQXJPcAn6ATBOQ0FL8nup");
         clientProfile.setBotId(379899470315257856L);
         fanbookClient = new DefaultFanbookBotClient(clientProfile);
     }
@@ -384,10 +384,11 @@ public class BotMethodTest {
     @Test
     public void testGetUpdatesMethod() {
         GetUpdatesMethod getUpdatesMethod = new GetUpdatesMethod();
+        getUpdatesMethod.setTimeout(5);
         ArrayList<Update> botResponse = fanbookClient.getBotResponse(getUpdatesMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
-        Map<UpdateTypeEnum, List<Update>> updateTypeEnumListMap = UpdateUtil.messageGroup(botResponse);
-        log.info("UpdateGroup:{}", new Gson().toJson(updateTypeEnumListMap));
+       /* Map<UpdateTypeEnum, List<Update>> updateTypeEnumListMap = UpdateUtil.messageGroup(botResponse);
+        log.info("UpdateGroup:{}", new Gson().toJson(updateTypeEnumListMap));*/
     }
 
 
@@ -471,5 +472,12 @@ public class BotMethodTest {
         ExistsMemberMethod existsMemberMethod = ExistsMemberMethod.builder().guildId("357042844231282688").memberId("").build();
         Exists botResponse = fanbookClient.getBotResponse(existsMemberMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
+    }
+
+    @Test
+    public void testLongPooling(){
+        for (int i = 0; i < 1000; i++) {
+            testGetUpdatesMethod();
+        }
     }
 }
