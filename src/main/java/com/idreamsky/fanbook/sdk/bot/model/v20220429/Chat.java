@@ -14,6 +14,9 @@ public class Chat implements Serializable {
     @SerializedName("type")
     private String type;
 
+    @SerializedName("channel_type")
+    private Integer channelType;
+
     @SerializedName("guild_id")
     private Long guildId;
 

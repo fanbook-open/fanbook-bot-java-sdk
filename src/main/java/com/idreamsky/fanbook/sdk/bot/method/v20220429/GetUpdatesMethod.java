@@ -8,11 +8,10 @@ import com.idreamsky.fanbook.sdk.bot.model.v20220429.Update;
 import com.idreamsky.fanbook.sdk.exception.BotApiRequestException;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
+import com.idreamsky.fanbook.sdk.http.HttpRequest;
 import com.idreamsky.fanbook.sdk.model.ApiResponse;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.idreamsky.fanbook.sdk.profile.ClientProfile;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Type;
@@ -43,10 +42,13 @@ public class GetUpdatesMethod extends BotMethod<ArrayList<Update>> {
     private Integer limit;
 
     @SerializedName("timeout")
-    private Integer timeout = 3;
+    private Integer timeout = 60;
 
     @SerializedName("allowed_updates")
     private List<String> allowedUpdates;
+
+    @SerializedName("ignore")
+    private Long ignore;
 
     /**
      * 获取接口的端点
@@ -98,5 +100,13 @@ public class GetUpdatesMethod extends BotMethod<ArrayList<Update>> {
     @Override
     public void validate() throws BotArgumentException {
 
+    }
+
+    @Override
+    public HttpRequest toHttpRequest(@NonNull ClientProfile clientProfile) {
+        HttpRequest httpRequest = super.toHttpRequest(clientProfile);
+        // 设置该请求使用长轮询的线程池
+        httpRequest.setLongPooling(true);
+        return httpRequest;
     }
 }

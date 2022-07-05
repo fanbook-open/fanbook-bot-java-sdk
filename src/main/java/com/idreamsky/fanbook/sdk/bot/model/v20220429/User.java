@@ -56,4 +56,7 @@ public class User implements Serializable {
 
     @SerializedName("invite_code")
     private String inviteCode;
+
+    @SerializedName("gender")
+    private Integer gender;
 }

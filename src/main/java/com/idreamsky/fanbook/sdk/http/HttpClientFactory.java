@@ -1,6 +1,5 @@
 package com.idreamsky.fanbook.sdk.http;
 
-import com.idreamsky.fanbook.sdk.profile.ClientProfile;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpRequest;
 import org.apache.http.NoHttpResponseException;
@@ -8,16 +7,13 @@ import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.protocol.HttpContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.SSLException;
 import javax.net.ssl.SSLHandshakeException;
-import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.UnknownHostException;
 import java.util.TimerTask;
@@ -33,12 +29,10 @@ public class HttpClientFactory {
 
     private static Logger logger = LoggerFactory.getLogger(HttpClientFactory.class);
 
-    public static HttpClientAdapter create(ClientProfile clientProfile) {
-        HttpConfig httpConfig = clientProfile.getHttpConfig();
+    public static HttpClientAdapter create(HttpConfig httpConfig) {
         PoolingHttpClientConnectionManager manager = new PoolingHttpClientConnectionManager();
         manager.setDefaultMaxPerRoute(httpConfig.getMaxRoute());
         manager.setMaxTotal(httpConfig.getMaxConn());
-
         RequestConfig globalConfig = RequestConfig.custom()
                 .setCookieSpec(CookieSpecs.IGNORE_COOKIES)
                 .setConnectTimeout(httpConfig.getConnectTimeout())
@@ -52,13 +46,15 @@ public class HttpClientFactory {
                 manager.closeExpiredConnections();
                 //关闭s空闲的连接
                 manager.closeIdleConnections(httpConfig.getMaxIdleTimeMillis(), TimeUnit.MILLISECONDS);
-                logger.info("close expired and idle for over {}s connection", httpConfig.getMaxIdleTimeMillis() / 1000);
+                if (logger.isDebugEnabled()) {
+                    logger.debug("close expired and idle for over {}s connection", httpConfig.getMaxIdleTimeMillis() / 1000);
+                }
             }
         }, 30 * 1000, 30 * 1000, TimeUnit.MILLISECONDS);
         final int maxRetryCount = httpConfig.getMaxRetryCount();
         HttpRequestRetryHandler httpRequestRetryHandler = (e, i, httpContext) -> {
             if (i > maxRetryCount) {
-                //重试超过3次,放弃请求
+                //重试超过{maxRetryCount}次,放弃请求
                 logger.error("retry has more than {} time, give up request", maxRetryCount);
                 return false;
             }
@@ -80,11 +76,6 @@ public class HttpClientFactory {
             if (e instanceof UnknownHostException) {
                 // 服务器不可达
                 logger.error("server host unknown");
-                return false;
-            }
-            if (e instanceof ConnectTimeoutException) {
-                // 连接超时
-                logger.error("Connection Time out");
                 return false;
             }
             if (e instanceof SSLException) {
