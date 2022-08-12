@@ -20,6 +20,9 @@ public class CreditSlot implements Serializable {
     @SerializedName("img")
     private String img;
 
+    @SerializedName("badge")
+    private String badge;
+
     /**
      * 必要字段
      */

@@ -480,4 +480,54 @@ public class BotMethodTest {
             testGetUpdatesMethod();
         }
     }
+
+    @Test
+    public void testSetCreditMethod20220812() {
+        SetCreditMethod setCreditMethod = new SetCreditMethod();
+        setCreditMethod.setUserId("314352321645522944");
+//        setCreditMethod.setChatId(357042844231282688L);
+        setCreditMethod.setGuildId("357042844231282688");
+        setCreditMethod.setCardId("d1010b44-8a03-4012-aed4-ec5bd4b3f572");
+        GuildCredit guildCredit = new GuildCredit();
+        guildCredit.setTitle(CreditTitle.builder()
+                .img("https://fanbook-cartoon-1251001060.cos.ap-shanghai.myqcloud.com/benny/credit/bot_dev.png")
+                .build());
+        guildCredit.setAuthority(CreditAuthority.builder()
+                .icon("https://fanbook-cartoon-1251001060.cos.ap-shanghai.myqcloud.com/qiuqiu/qiuqiu.jpg")
+                .name("郭大大")
+                .build());
+        guildCredit.setBottomButton(BottomButton.builder().content("个人中心").url("http://www.monkeyg.ltd").build());
+        List<List<CreditSlot>> creditSlots = new ArrayList<>();
+        guildCredit.setSlots(creditSlots);
+        {
+            List<CreditSlot> list = new ArrayList<>();
+            list.add(CreditSlot.builder().label("角色名称").value("404NotFound").build());
+            list.add(CreditSlot.builder().label("角色等级").value("99").build());
+            creditSlots.add(list);
+        }
+        {
+            List<CreditSlot> list = new ArrayList<>();
+            list.add(CreditSlot.builder().label("当前称号").value("天梯第一ADC").build());
+            list.add(CreditSlot.builder().label("当前赛季场次").value("99").build());
+            creditSlots.add(list);
+        }
+        {
+            List<CreditSlot> list = new ArrayList<>();
+            list.add(CreditSlot.builder().label("当前称号").badge("https://fanbook-cartoon-1251001060.cos.ap-shanghai.myqcloud.com/benny/credit/bot_dev.png").value("天梯第一ADC").build());
+            creditSlots.add(list);
+        }
+        {
+            List<CreditSlot> list = new ArrayList<>();
+            list.add(CreditSlot.builder().value("常用动物家族").img("https://xiaodongwu-forum-1251001060.file.myqcloud.com/fanbook/animal/icon_head_fox.png").build());
+            list.add(CreditSlot.builder().value("擅长枪械").img("https://xiaodongwu-forum-1251001060.file.myqcloud.com/fanbook/weapon/melee_katana.png").build());
+            list.add(CreditSlot.builder().value("常用坐骑").img("https://xiaodongwu-forum-1251001060.file.myqcloud.com/fanbook/vehicle/icon_personal_vehicle_hamsterball.png").build());
+            list.add(CreditSlot.builder().value("积分排行").img("https://fanbook-cartoon-1251001060.cos.ap-shanghai.myqcloud.com/hssm/1522779573807353856.jpg").build());
+            creditSlots.add(list);
+        }
+
+        setCreditMethod.setGuildCredit(guildCredit);
+        Boolean botResponse = fanbookClient.getBotResponse(setCreditMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
+    }
+
 }
