@@ -19,6 +19,7 @@ Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/ma
 | 0.0.9.RELEASE | 2022-06-21 | peng.gan | Message对象新增三个圈子相关变量;UpdateUtil增加枚举类型 |
 | 0.1.1.RELEASE | 2022-07-01 | peng.gan | Fanbook接口异常打印Error级别日志 |
 | 0.1.3.RELEASE | 2022-07-01 | peng.gan | GetUpdates接口单独使用长轮询线程池，默认设置timeOut=60s |
+| 0.1.4.RELEASE | 2022-08-18 | peng.gan | GetUpdates接口单独使用增加interactionMessageCardOperation字段；新增SearchGuildMemberByNameMethod接口; |
 
 ## 引入工具包
 
