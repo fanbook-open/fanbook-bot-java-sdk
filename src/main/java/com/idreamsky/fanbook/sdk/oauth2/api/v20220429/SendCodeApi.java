@@ -29,6 +29,7 @@ public class SendCodeApi extends FanbookRestfulApi<SendCodeResponse> {
     @SerializedName("device")
     private String device;
 
+    @Builder.Default
     @SerializedName("area_code")
     private String areaCode = "+86";
 

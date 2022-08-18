@@ -168,4 +168,8 @@ public class Message implements Serializable {
 
     @SerializedName("circle_share_entity")
     private CircleShareEntity circleShareEntity;
+
+    @SerializedName("interaction_message_card_operation")
+    private Object interactionMessageCardOperation;
+
 }

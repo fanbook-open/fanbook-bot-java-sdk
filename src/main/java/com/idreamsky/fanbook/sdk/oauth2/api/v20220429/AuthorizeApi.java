@@ -28,6 +28,7 @@ import java.util.Map;
 @Builder
 public class AuthorizeApi extends FanbookRestfulApi<String> {
 
+    @Builder.Default
     @SerializedName("response_type")
     private String responseType = "code";
 

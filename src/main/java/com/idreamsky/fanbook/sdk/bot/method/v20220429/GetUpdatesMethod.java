@@ -41,6 +41,7 @@ public class GetUpdatesMethod extends BotMethod<ArrayList<Update>> {
     @SerializedName("limit")
     private Integer limit;
 
+    @Builder.Default
     @SerializedName("timeout")
     private Integer timeout = 60;
 
