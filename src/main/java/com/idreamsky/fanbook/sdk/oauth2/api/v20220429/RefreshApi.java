@@ -21,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Builder
 public class RefreshApi extends FanbookRestfulApi<TokenResponse> {
 
+    @Builder.Default
     @SerializedName("grant_type")
     private String grantType = "refresh_token";
 

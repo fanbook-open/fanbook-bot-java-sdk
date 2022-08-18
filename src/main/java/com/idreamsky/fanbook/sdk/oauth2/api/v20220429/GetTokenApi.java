@@ -28,6 +28,7 @@ import java.util.Map;
 @Builder
 public class GetTokenApi extends FanbookRestfulApi<TokenResponse> {
 
+    @Builder.Default
     @SerializedName("grant_type")
     private String grantType = "authorization_code";
 

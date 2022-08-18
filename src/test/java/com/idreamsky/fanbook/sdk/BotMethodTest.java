@@ -480,4 +480,18 @@ public class BotMethodTest {
             testGetUpdatesMethod();
         }
     }
+
+    @Test
+    public void testSearchGuildMemberByNameMethod(){
+        List<String> shortIds = new ArrayList<>();
+        for (int i = 0; i < 51; i++) {
+            shortIds.add("279968");
+            shortIds.add("1362342");
+        }
+
+        SearchGuildMemberByNameMethod searchGuildMemberByNameMethod = SearchGuildMemberByNameMethod.builder().guildId(357042844231282688L)
+                .username(shortIds).build();
+        ArrayList<ChatMember> botResponse = fanbookClient.getBotResponse(searchGuildMemberByNameMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
+    }
 }
