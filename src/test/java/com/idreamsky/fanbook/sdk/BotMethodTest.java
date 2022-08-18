@@ -530,4 +530,14 @@ public class BotMethodTest {
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
 
+    @Test
+    public void testSetCreditMethodByName20220818() {
+        SearchGuildMemberByNameMethod searchGuildMemberByNameMethod = new SearchGuildMemberByNameMethod();
+        searchGuildMemberByNameMethod.setGuildId(357042844231282688L);
+        List<String> username = Arrays.asList("1908591");
+        searchGuildMemberByNameMethod.setUsername(username);
+        Serializable botResponse = fanbookClient.getBotResponse(searchGuildMemberByNameMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
+    }
+
 }

@@ -19,7 +19,7 @@ public class GuildCredit implements Serializable {
     private BottomButton bottomButton;
 
     @SerializedName("view_ids")
-    private List<Long> viewIds;
+    private List<String> viewIds;
 
     @SerializedName("slots")
     private List<List<CreditSlot>> slots;
