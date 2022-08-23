@@ -18,9 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 @Builder
 public class HttpConfig {
 
-    private int connectTimeout = 10000;
+    private int connectTimeout = 6000;
 
-    private int socketTimeout = 20000;
+    private int socketTimeout = 12000;
 
     private int maxConn = 128;
 

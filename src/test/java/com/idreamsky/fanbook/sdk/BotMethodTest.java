@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.idreamsky.fanbook.sdk.bot.constant.v20220429.ChannelTypeEnum;
 import com.idreamsky.fanbook.sdk.bot.method.v20220429.*;
 import com.idreamsky.fanbook.sdk.bot.model.v20220429.*;
-import com.idreamsky.fanbook.sdk.oauth2.model.v20220429.ChannelInfo;
 import com.idreamsky.fanbook.sdk.profile.ClientProfile;
-import com.idreamsky.fanbook.sdk.support.UpdateUtil;
-import com.idreamsky.fanbook.sdk.support.constant.UpdateTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +12,10 @@ import org.junit.Test;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -429,7 +429,7 @@ public class BotMethodTest {
     }
 
     @Test
-    public void testCreateRoleMethod(){
+    public void testCreateRoleMethod() {
         CreateRoleMethod createRoleMethod = new CreateRoleMethod();
         createRoleMethod.setGuildId("357042844231282688");
         createRoleMethod.setName("小蜜蜂");
@@ -440,7 +440,7 @@ public class BotMethodTest {
     }
 
     @Test
-    public void testEditChannelMethod(){
+    public void testEditChannelMethod() {
         List<PermissionOverwrite> permissionOverwrites = Arrays.asList(PermissionOverwrite.builder().id("173022860380475392").actionType("user").allows(1024).deny(0).build(),
                 PermissionOverwrite.builder().id("233558858419671040").actionType("user").allows(1024).deny(0).build(),
                 PermissionOverwrite.builder().id("357042844281614336").actionType("role").allows(0).deny(1024).build());
@@ -457,7 +457,7 @@ public class BotMethodTest {
     }
 
     @Test
-    public void testDeleteChannelMethod(){
+    public void testDeleteChannelMethod() {
         DeleteChannelMethod deleteChannelMethod = DeleteChannelMethod.builder()
                 .channelId("377429008150691840")
                 .userId(clientProfile.getBotId().toString())
@@ -468,21 +468,21 @@ public class BotMethodTest {
     }
 
     @Test
-    public void testExistsMemberMethod(){
+    public void testExistsMemberMethod() {
         ExistsMemberMethod existsMemberMethod = ExistsMemberMethod.builder().guildId("357042844231282688").memberId("").build();
         Exists botResponse = fanbookClient.getBotResponse(existsMemberMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
 
     @Test
-    public void testLongPooling(){
+    public void testLongPooling() {
         for (int i = 0; i < 1000; i++) {
             testGetUpdatesMethod();
         }
     }
 
     @Test
-    public void testSearchGuildMemberByNameMethod(){
+    public void testSearchGuildMemberByNameMethod() {
         List<String> shortIds = new ArrayList<>();
         for (int i = 0; i < 51; i++) {
             shortIds.add("279968");

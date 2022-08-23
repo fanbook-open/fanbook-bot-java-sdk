@@ -1,8 +1,10 @@
 package com.idreamsky.fanbook.sdk.profile;
 
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
+import com.idreamsky.fanbook.sdk.http.CircuitBreakerFactory;
 import com.idreamsky.fanbook.sdk.http.HttpConfig;
 import com.idreamsky.fanbook.sdk.interfaces.Validable;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,9 +43,12 @@ public class ClientProfile implements Validable {
 
     private Long botId;
 
+    private CircuitBreakerConfig circuitBreakerConfig;
+
     public static ClientProfile getDefaultProfile() {
         ClientProfile clientProfile = new ClientProfile();
         clientProfile.setHttpConfig(new HttpConfig());
+        clientProfile.setCircuitBreakerConfig(CircuitBreakerFactory.defaultCircuitBreakerConfig());
         return clientProfile;
     }
 
