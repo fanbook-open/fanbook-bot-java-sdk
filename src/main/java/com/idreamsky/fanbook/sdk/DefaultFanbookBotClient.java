@@ -2,8 +2,13 @@ package com.idreamsky.fanbook.sdk;
 
 import com.google.gson.Gson;
 import com.idreamsky.fanbook.sdk.exception.BotClientException;
+import com.idreamsky.fanbook.sdk.exception.BotRemoteServerException;
 import com.idreamsky.fanbook.sdk.http.*;
 import com.idreamsky.fanbook.sdk.profile.ClientProfile;
+import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import io.vavr.CheckedFunction0;
+import io.vavr.control.Try;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpStatus;
 
@@ -23,6 +28,8 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
 
     private HttpClientAdapter longPollingHttpClient;
 
+    private CircuitBreakerFactory circuitBreakerFactory;
+
     public DefaultFanbookBotClient(ClientProfile clientProfile) {
         clientProfile.validate();
         this.clientProfile = clientProfile;
@@ -30,7 +37,7 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
         HttpConfig updatesHttpConfig = new HttpConfig();
         updatesHttpConfig.setSocketTimeout(120 * 1000);
         this.longPollingHttpClient = HttpClientFactory.create(updatesHttpConfig);
-
+        circuitBreakerFactory = new CircuitBreakerFactory(clientProfile.getCircuitBreakerConfig());
     }
 
 
@@ -62,7 +69,14 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
     public <T extends Serializable> HttpResponse invoke(BotMethod<T> botMethod) {
         HttpRequest httpRequest = botMethod.toHttpRequest(clientProfile);
         botMethod.validate();
-        return this.doInvoke(httpRequest);
+        String name = String.format("%s:%s", httpRequest.getHttpMethodType().name(), httpRequest.getUrl());
+        CircuitBreaker circuitBreaker = circuitBreakerFactory.getCircuitBreaker(name);
+        CheckedFunction0<HttpResponse> httpResponseCheckedFunction0 = CircuitBreaker.decorateCheckedSupplier(circuitBreaker, () -> doInvoke(httpRequest));
+        return Try.of(httpResponseCheckedFunction0).recover(CallNotPermittedException.class,
+                throwable -> {
+                    log.error("Fanbook Bot api 【{}】不可用, 已触发熔断, err:{}", name, throwable.getMessage(), throwable);
+                    throw new BotRemoteServerException("Fanbook服务器暂时不可用，请稍后再试");
+                }).get();
     }
 
     /**
