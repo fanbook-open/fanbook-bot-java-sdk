@@ -164,7 +164,7 @@ public class Message implements Serializable {
     private CircleLike circleLike;
 
     @SerializedName("topic_share")
-    private Object topicShare;
+    private TopicShare topicShare;
 
     @SerializedName("circle_share_entity")
     private CircleShareEntity circleShareEntity;
