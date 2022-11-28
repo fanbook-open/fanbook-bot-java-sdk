@@ -11,6 +11,7 @@ import io.vavr.CheckedFunction0;
 import io.vavr.control.Try;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpStatus;
+import org.apache.http.concurrent.FutureCallback;
 
 import java.io.Serializable;
 
@@ -28,7 +29,9 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
 
     private HttpClientAdapter longPollingHttpClient;
 
-    private CircuitBreakerFactory circuitBreakerFactory;
+    private HttpClientAdapter asyncHttpClient;
+
+    private final CircuitBreakerFactory circuitBreakerFactory;
 
     public DefaultFanbookBotClient(ClientProfile clientProfile) {
         clientProfile.validate();
@@ -38,6 +41,7 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
         updatesHttpConfig.setSocketTimeout(120 * 1000);
         this.longPollingHttpClient = HttpClientFactory.create(updatesHttpConfig);
         circuitBreakerFactory = new CircuitBreakerFactory(clientProfile.getCircuitBreakerConfig());
+        this.asyncHttpClient = HttpClientFactory.createAsyncClient(clientProfile.getHttpConfig());
     }
 
 
@@ -45,7 +49,7 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
     public <T extends Serializable> T getBotResponse(BotMethod<T> botMethod) {
         HttpResponse httpResponse = this.invoke(botMethod);
         if (httpResponse.getStatus() != HttpStatus.SC_OK) {
-            log.error("Fanbook bot 响应结果失败，HttpResponse:{}", new Gson().toJson(httpResponse));
+            log.error("Fanbook bot 【{}】响应结果失败，HttpResponse:{}", botMethod.getClass().getSimpleName(), new Gson().toJson(httpResponse));
             throw new BotClientException("Server internal error");
         }
         return this.parseBotResponse(botMethod, httpResponse);
@@ -69,7 +73,7 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
     public <T extends Serializable> HttpResponse invoke(BotMethod<T> botMethod) {
         HttpRequest httpRequest = botMethod.toHttpRequest(clientProfile);
         botMethod.validate();
-        String name = String.format("%s:%s", httpRequest.getHttpMethodType().name(), httpRequest.getUrl());
+        String name = String.format("%s", httpRequest.getHttpMethodType().name());
         CircuitBreaker circuitBreaker = circuitBreakerFactory.getCircuitBreaker(name);
         CheckedFunction0<HttpResponse> httpResponseCheckedFunction0 = CircuitBreaker.decorateCheckedSupplier(circuitBreaker, () -> doInvoke(httpRequest));
         return Try.of(httpResponseCheckedFunction0).recover(CallNotPermittedException.class,
@@ -94,5 +98,10 @@ public class DefaultFanbookBotClient implements IFanbookBotClient {
         }
     }
 
-
+    @Override
+    public <T extends Serializable> void getBotResponseFuture(BotMethod<T> botMethod, FutureCallback<org.apache.http.HttpResponse> callback) {
+        botMethod.validate();
+        HttpRequest httpRequest = botMethod.toHttpRequest(clientProfile);
+        this.asyncHttpClient.doInvokeFuture(httpRequest, callback);
+    }
 }

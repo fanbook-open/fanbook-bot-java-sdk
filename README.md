@@ -21,6 +21,7 @@ Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/ma
 | 0.1.3.RELEASE | 2022-07-01 | peng.gan | GetUpdates接口单独使用长轮询线程池，默认设置timeOut=60s |
 | 0.1.4.RELEASE | 2022-08-18 | peng.gan | GetUpdates接口单独使用增加interactionMessageCardOperation字段；新增SearchGuildMemberByNameMethod接口; |
 | 0.2.0.RELEASE | 2022-08-23 | peng.gan | 引入resilience4j的熔断器组件，用于保护内部应用安全；修改http config的默认超时时间；|
+| 0.2.3.RELEASE | 2022-11-28 | peng.gan | 新增Async回调方式；新增三个卡片相关的调用类|
 
 ## 引入工具包
 
@@ -46,13 +47,18 @@ mvn clean package -Dmaven.test.skip=true
 1. 初始化Fanbook Bot Clientlient
 
 ```
-    ClientProfile clientProfile = ClientProfile.getDefaultProfile();
-    clientProfile.setClientKey(clientID);
-    clientProfile.setClientSecret(clientSecret);
-    clientProfile.setBotToken(botToken);
-    clientProfile.setBotId(botId));
-    IFanbookBotClient client = new DefaultFanbookBotClient(clientProfile);
-    return client;
+    // 如果使用Spring框架，可以注册将fanbookBotClient注册成为bean
+    @Bean
+    public IFanbookBotClient fanbookBotClient() {
+        ClientProfile clientProfile = ClientProfile.getDefaultProfile();
+        clientProfile.setClientKey(fanbookProperties.getClientId());
+        clientProfile.setClientSecret(fanbookProperties.getClientSecret());
+        clientProfile.setBotId(fanbookProperties.getBotId());
+        clientProfile.setBotToken(fanbookProperties.getBotToken());
+        clientProfile.setDomain(fanbookProperties.getDomain());
+        clientProfile.getHttpConfig().setSocketTimeout(fanbookProperties.getSetSocketTimeout());
+        return new DefaultFanbookBotClient(clientProfile);
+    }
 ```
 
 2. Oauth2 API使用
