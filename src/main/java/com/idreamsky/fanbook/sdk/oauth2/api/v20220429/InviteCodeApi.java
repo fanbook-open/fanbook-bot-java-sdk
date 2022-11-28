@@ -5,11 +5,14 @@ import com.idreamsky.fanbook.sdk.FanbookRestfulApi;
 import com.idreamsky.fanbook.sdk.exception.BotArgumentException;
 import com.idreamsky.fanbook.sdk.http.HttpMethodType;
 import com.idreamsky.fanbook.sdk.oauth2.model.v20220429.InviteCodeResponse;
+import com.idreamsky.fanbook.sdk.profile.ClientProfile;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.Map;
 
 /**
  * 根据邀请码查询持有邀请码对应的用户
@@ -38,6 +41,29 @@ public class InviteCodeApi extends FanbookRestfulApi<InviteCodeResponse> {
     @Override
     public Class<InviteCodeResponse> getResponseClass() {
         return InviteCodeResponse.class;
+    }
+    /**
+     * 根据数据传递格式，构造request body
+     *
+     * @param clientProfile 客户端环境
+     * @return 字符串格式的http request body
+     */
+    @Override
+    protected String buildBody(ClientProfile clientProfile) {
+        return null;
+    }
+
+
+    /**
+     * 自定义构建URL变量
+     *
+     * @param clientProfile 客户端环境
+     * @return k-v形式的URL变量集合
+     */
+    @Override
+    protected Map<String, String> buildUriVariables(ClientProfile clientProfile) {
+        this.addUriVariables("c", c);
+        return super.uriVariables;
     }
 
     @Override
