@@ -47,7 +47,7 @@ mvn clean package -Dmaven.test.skip=true
 1. 初始化Fanbook Bot Clientlient
 
 ```
-    // 如果使用Spring框架，可以注册将fanbookBotClient注册成为bean
+    // 如果使用Spring框架，可以将fanbookBotClient注册成为bean
     @Bean
     public IFanbookBotClient fanbookBotClient() {
         ClientProfile clientProfile = ClientProfile.getDefaultProfile();
