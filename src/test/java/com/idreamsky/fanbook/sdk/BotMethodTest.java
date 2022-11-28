@@ -44,9 +44,8 @@ public class BotMethodTest {
     @Test
     public void TestSendMessageMethod() {
         SendMessageMethod sendMessageMethod = new SendMessageMethod();
-        sendMessageMethod.setChatId(357042844399042561L);
+        sendMessageMethod.setChatId(406382019036053504L);
         sendMessageMethod.setText("hello world");
-        sendMessageMethod.setReplyToMessageId(360703245468827648L);
         Message botResponse = fanbookClient.getBotResponse(sendMessageMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
@@ -169,12 +168,21 @@ public class BotMethodTest {
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
 
+
     @Test
     public void testGetPrivateChatMethod() {
         GetPrivateChatMethod getPrivateChatMethod = new GetPrivateChatMethod();
         getPrivateChatMethod.setUserId(173022860380475392L);
         Chat botResponse = fanbookClient.getBotResponse(getPrivateChatMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
+        System.out.println(botResponse.getId());
+    }
+
+    @Test
+    public void testGetPrivateChatMethodBatch() {
+        for (int i = 0; i < 10; i++) {
+            testGetPrivateChatMethod();
+        }
     }
 
     @Test
@@ -258,7 +266,7 @@ public class BotMethodTest {
     public void testGetChatMemberMethod() {
         GetChatMemberMethod getChatMemberMethod = new GetChatMemberMethod();
         getChatMemberMethod.setGuildId(357042844231282688L);
-        getChatMemberMethod.setUserId(138519745866498048L);
+        getChatMemberMethod.setUserId(266195639770021888L);
         Serializable botResponse = fanbookClient.getBotResponse(getChatMemberMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
@@ -493,5 +501,21 @@ public class BotMethodTest {
                 .username(shortIds).build();
         ArrayList<ChatMember> botResponse = fanbookClient.getBotResponse(searchGuildMemberByNameMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
+    }
+
+    @Test
+    public void TestSendMessageMethodFuture() throws InterruptedException {
+        SendMessageMethod sendMessageMethod = new SendMessageMethod();
+        sendMessageMethod.setChatId(384533822017904640L);
+        sendMessageMethod.setText("hello world");
+        fanbookClient.getBotResponseFuture(sendMessageMethod, new BotMethodFutureCallback(sendMessageMethod) {
+            @Override
+            protected void getBotMethodResponse(Serializable serializable) {
+                Message message = (Message) serializable;
+                log.info("msg:{}", message);
+            }
+        });
+
+        TimeUnit.SECONDS.sleep(10);
     }
 }

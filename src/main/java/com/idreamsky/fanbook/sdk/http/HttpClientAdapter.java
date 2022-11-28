@@ -2,15 +2,18 @@ package com.idreamsky.fanbook.sdk.http;
 
 import com.google.gson.Gson;
 import com.idreamsky.fanbook.sdk.exception.BotClientException;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
@@ -19,6 +22,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.*;
+import java.util.concurrent.Future;
 
 /**
  * http client客户端适配器
@@ -29,10 +33,16 @@ import java.util.*;
 public class HttpClientAdapter {
 
     private CloseableHttpClient httpClient;
+    private CloseableHttpAsyncClient httpAsyncClient;
 
     public HttpClientAdapter(CloseableHttpClient httpClient) {
         this.httpClient = httpClient;
     }
+
+    public HttpClientAdapter(CloseableHttpAsyncClient httpClient) {
+        this.httpAsyncClient = httpClient;
+    }
+
 
     public HttpResponse doInvoke(HttpRequest httpRequest) {
         HttpUriRequest httpUriRequest = this.buildHttpUriRequest(httpRequest);
@@ -82,5 +92,15 @@ public class HttpClientAdapter {
             httpRequest.getUriVariables().forEach(requestBuilder::addParameter);
         }
         return requestBuilder.build();
+    }
+
+    @SneakyThrows
+    public void doInvokeFuture(HttpRequest httpRequest, FutureCallback<org.apache.http.HttpResponse> callback) {
+        HttpUriRequest httpUriRequest = this.buildHttpUriRequest(httpRequest);
+        if (!httpAsyncClient.isRunning()) {
+            httpAsyncClient.start();
+        }
+        Future<org.apache.http.HttpResponse> execute = httpAsyncClient.execute(httpUriRequest, callback);
+
     }
 }

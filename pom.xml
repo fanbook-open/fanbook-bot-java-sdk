@@ -4,7 +4,7 @@
 
     <groupId>io.github.fanbook-open</groupId>
     <artifactId>fanbook-bot-sdk</artifactId>
-    <version>0.2.1.RELEASE</version>
+    <version>0.2.3.RELEASE</version>
     <packaging>jar</packaging>
     <name>fanbook-bot-sdk</name>
     <url>https://open.fanbook.mobi</url>
@@ -61,6 +61,11 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
             <version>4.4.14</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpasyncclient</artifactId>
+            <version>4.1.3</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
