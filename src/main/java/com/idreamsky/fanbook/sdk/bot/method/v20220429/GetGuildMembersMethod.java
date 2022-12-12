@@ -34,7 +34,7 @@ public class GetGuildMembersMethod extends BotMethod<ArrayList<ChatMember>> {
     private Long guildId;
 
     @SerializedName("after")
-    private Integer after;
+    private Long after;
 
     @SerializedName("limit")
     private Integer limit;
