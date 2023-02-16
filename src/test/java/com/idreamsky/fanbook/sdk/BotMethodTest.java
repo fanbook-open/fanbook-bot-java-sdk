@@ -366,7 +366,7 @@ public class BotMethodTest {
     @Test
     public void testCirclePostDetailMethod() {
         CirclePostDetailMethod circlePostDetailMethod = new CirclePostDetailMethod();
-        circlePostDetailMethod.setPostId("357403575611039744");
+        circlePostDetailMethod.setPostId("379876855617945600");
         Serializable botResponse = fanbookClient.getBotResponse(circlePostDetailMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
@@ -374,7 +374,7 @@ public class BotMethodTest {
     @Test
     public void testCirclePostReactionListBotMethod() {
         CirclePostReactionListBotMethod circlePostReactionListBotMethod = new CirclePostReactionListBotMethod();
-        circlePostReactionListBotMethod.setPostId("358508027923410944");
+        circlePostReactionListBotMethod.setPostId("379876855617945600");
         CirclePostReaction botResponse = fanbookClient.getBotResponse(circlePostReactionListBotMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
@@ -506,7 +506,7 @@ public class BotMethodTest {
     @Test
     public void TestSendMessageMethodFuture() throws InterruptedException {
         SendMessageMethod sendMessageMethod = new SendMessageMethod();
-        sendMessageMethod.setChatId(384533822017904640L);
+        sendMessageMethod.setChatId(-122L);
         sendMessageMethod.setText("hello world");
         fanbookClient.getBotResponseFuture(sendMessageMethod, new BotMethodFutureCallback(sendMessageMethod) {
             @Override
@@ -515,7 +515,7 @@ public class BotMethodTest {
                 log.info("msg:{}", message);
             }
         });
-
+        System.out.println(123);
         TimeUnit.SECONDS.sleep(10);
     }
 }
