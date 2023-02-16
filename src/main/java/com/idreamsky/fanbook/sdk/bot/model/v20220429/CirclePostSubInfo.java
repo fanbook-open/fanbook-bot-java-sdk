@@ -22,7 +22,7 @@ public class CirclePostSubInfo implements Serializable {
     private Long liked;
 
     @SerializedName("like_id")
-    private List<String> likeId;
+    private String likeId;
 
     @SerializedName("is_top")
     private Boolean isTop;

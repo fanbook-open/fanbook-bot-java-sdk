@@ -51,6 +51,8 @@ public class GetUpdatesMethod extends BotMethod<ArrayList<Update>> {
     @SerializedName("ignore")
     private Long ignore;
 
+    @SerializedName("msg_type")
+    private String msgType;
     /**
      * 获取接口的端点
      *

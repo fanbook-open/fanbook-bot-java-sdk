@@ -22,6 +22,7 @@ Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/ma
 | 0.1.4.RELEASE | 2022-08-18 | peng.gan | GetUpdates接口单独使用增加interactionMessageCardOperation字段；新增SearchGuildMemberByNameMethod接口; |
 | 0.2.0.RELEASE | 2022-08-23 | peng.gan | 引入resilience4j的熔断器组件，用于保护内部应用安全；修改http config的默认超时时间；|
 | 0.2.3.RELEASE | 2022-11-28 | peng.gan | 新增Async回调方式；新增三个卡片相关的调用类|
+| 0.2.5.RELEASE | 2023-02-16 | peng.gan | CirclePost修改部分字段的数据类型|
 
 ## 引入工具包
 
@@ -44,7 +45,7 @@ mvn clean package -Dmaven.test.skip=true
 
 ## 使用样例
 
-1. 初始化Fanbook Bot Clientlient
+1. 初始化Fanbook Bot Client
 
 ```
     // 如果使用Spring框架，可以将fanbookBotClient注册成为bean
@@ -62,7 +63,7 @@ mvn clean package -Dmaven.test.skip=true
 ```
 
 2. Oauth2 API使用
-   Oauth2 API工具类通常是以API为结尾的类。
+   授权相关的接口工具类通常是以API为结尾的类。
 
 ```
     @Autowired
