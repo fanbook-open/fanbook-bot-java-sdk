@@ -23,6 +23,7 @@ Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/ma
 | 0.2.0.RELEASE | 2022-08-23 | peng.gan | 引入resilience4j的熔断器组件，用于保护内部应用安全；修改http config的默认超时时间；|
 | 0.2.3.RELEASE | 2022-11-28 | peng.gan | 新增Async回调方式；新增三个卡片相关的调用类|
 | 0.2.5.RELEASE | 2023-02-16 | peng.gan | CirclePost修改部分字段的数据类型|
+| 0.2.6.RELEASE | 2023-06-08 | peng.gan | getUpdates新增new_join_members字段用于替换new_chat_members字段|
 
 ## 引入工具包
 
@@ -106,9 +107,9 @@ mvn clean package -Dmaven.test.skip=true
 
 由于开发平台版本迭代较快，SDK版本会出现滞后发布的场景。因此，开发者可以自行定义或修改SDK中旧版本的Bot API。
 
-如果需要定义的Fanbook API是Bot风格的，可以通过实现“BotMethod”抽象类和自定义响应实体类来完成。
+如果需要定义的Fanbook API是Bot接口类型的，可以通过实现“BotMethod”抽象类和自定义响应实体类来完成。
 
-如果需要定义的Fanbook API是Restful风格，可以通过实现“FanbookRestfulApi”抽象类和自定义响应实体类完成。
+如果需要定义的Fanbook API是Oauth2接口类型的，可以通过实现“FanbookRestfulApi”抽象类和自定义响应实体类完成。
 
 2. 客户端 HTTP Client参数修改
 
