@@ -101,6 +101,5 @@ public class HttpClientAdapter {
             httpAsyncClient.start();
         }
         Future<org.apache.http.HttpResponse> execute = httpAsyncClient.execute(httpUriRequest, callback);
-
     }
 }

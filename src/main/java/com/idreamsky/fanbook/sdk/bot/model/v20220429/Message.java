@@ -109,6 +109,9 @@ public class Message implements Serializable {
     @SerializedName("new_chat_members")
     private List<User> newChatMembers;
 
+    @SerializedName("new_join_members")
+    private List<User> newJoinMembers;
+
     @SerializedName("left_chat_member")
     private User leftChatMember;
 
