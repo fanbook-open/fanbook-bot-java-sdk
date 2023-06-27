@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 public class Update implements Serializable {
@@ -43,4 +44,5 @@ public class Update implements Serializable {
 
     @SerializedName("poll_answer")
     private PollAnswer pollAnswer;
+
 }

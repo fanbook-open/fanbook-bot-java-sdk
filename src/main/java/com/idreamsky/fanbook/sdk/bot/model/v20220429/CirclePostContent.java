@@ -26,9 +26,25 @@ public class CirclePostContent implements Serializable {
     @SerializedName("created_at")
     private String createdAt;
 
+    @SerializedName("updated_at")
+    private String updatedAt;
+
     @SerializedName("content")
     private String content;
 
     @SerializedName("topic_id")
     private String topicId;
+
+    @SerializedName("content_v2")
+    private String contentV2;
+
+    @SerializedName("has_video")
+    private Integer hasVideo;
+
+    @SerializedName("post_type")
+    private String postType;
+
+    @SerializedName("cover")
+    private CircleCover cover;
+
 }
