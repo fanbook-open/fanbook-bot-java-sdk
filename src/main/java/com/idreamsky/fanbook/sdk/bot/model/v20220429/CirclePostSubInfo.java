@@ -9,10 +9,10 @@ import java.util.List;
 @Data
 public class CirclePostSubInfo implements Serializable {
 
-    @SerializedName("commentTotal")
+    @SerializedName("comment_total")
     private Long commentTotal;
 
-    @SerializedName("likeTotal")
+    @SerializedName("like_total")
     private Long likeTotal;
 
     @SerializedName("can_del")
