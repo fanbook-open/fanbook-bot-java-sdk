@@ -13,9 +13,6 @@ import java.util.concurrent.Future;
 
 /**
  * @author: peng.gan
- * @description:
- * @date: 2022/11/28 10:14
- * @version: 1.0
  */
 @Slf4j
 public class FtTest {
