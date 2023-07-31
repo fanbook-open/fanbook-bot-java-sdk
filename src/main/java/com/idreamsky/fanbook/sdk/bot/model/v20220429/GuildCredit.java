@@ -17,4 +17,7 @@ public class GuildCredit implements Serializable {
 
     @SerializedName("slots")
     private List<List<CreditSlot>> slots;
+
+    @SerializedName("type")
+    private Integer type;
 }

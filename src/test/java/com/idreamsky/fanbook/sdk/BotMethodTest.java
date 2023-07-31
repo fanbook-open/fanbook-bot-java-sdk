@@ -3,6 +3,7 @@ package com.idreamsky.fanbook.sdk;
 import com.google.gson.Gson;
 import com.idreamsky.fanbook.sdk.bot.constant.v20220429.ChannelTypeEnum;
 import com.idreamsky.fanbook.sdk.bot.method.v20220429.*;
+import com.idreamsky.fanbook.sdk.bot.method.v20230731.GetUpdatesV2Method;
 import com.idreamsky.fanbook.sdk.bot.model.v20220429.*;
 import com.idreamsky.fanbook.sdk.profile.ClientProfile;
 import lombok.extern.slf4j.Slf4j;
@@ -156,7 +157,34 @@ public class BotMethodTest {
         Boolean botResponse = fanbookClient.getBotResponse(setCreditMethod);
         log.info("botResponse:{}", new Gson().toJson(botResponse));
     }
-
+    @Test
+    public void testSetCreditMethod2() {
+        SetCreditMethod setCreditMethod = new SetCreditMethod();
+        setCreditMethod.setUserId("173022860380475392");
+        setCreditMethod.setChatId(357042844231282688L);
+//        setCreditMethod.setGuildId("357042844231282688");
+        setCreditMethod.setCardId(String.valueOf(System.currentTimeMillis()));
+        GuildCredit guildCredit = new GuildCredit();
+        guildCredit.setTitle(CreditTitle.builder()
+                .img("https://fanbook-cartoon-1251001060.cos.ap-shanghai.myqcloud.com/hssm/1522779573807353856.jpg")
+                .build());
+        guildCredit.setAuthority(CreditAuthority.builder()
+                .icon("https://xiaodongwu-forum-1251001060.file.myqcloud.com/fanbook/gamelogo/logomini.png")
+                .name("小动物之星2")
+                .build());
+        List<List<CreditSlot>> creditSlots = new ArrayList<>();
+        guildCredit.setSlots(creditSlots);
+        {
+            List<CreditSlot> list = new ArrayList<>();
+            list.add(CreditSlot.builder().label("角色名称").value("ToTheMoon").build());
+            list.add(CreditSlot.builder().label("角色等级").value("99").build());
+            creditSlots.add(list);
+        }
+        guildCredit.setType(2);
+        setCreditMethod.setGuildCredit(guildCredit);
+        Boolean botResponse = fanbookClient.getBotResponse(setCreditMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
+    }
 
     @Test
     public void testDeleteCreditMethod() {
@@ -399,6 +427,15 @@ public class BotMethodTest {
         log.info("UpdateGroup:{}", new Gson().toJson(updateTypeEnumListMap));*/
     }
 
+    @Test
+    public void testGetUpdatesMethod2() {
+        GetUpdatesV2Method getUpdatesMethod = new GetUpdatesV2Method();
+        getUpdatesMethod.setTimeout(5);
+        ArrayList<Update> botResponse = fanbookClient.getBotResponse(getUpdatesMethod);
+        log.info("botResponse:{}", new Gson().toJson(botResponse));
+       /* Map<UpdateTypeEnum, List<Update>> updateTypeEnumListMap = UpdateUtil.messageGroup(botResponse);
+        log.info("UpdateGroup:{}", new Gson().toJson(updateTypeEnumListMap));*/
+    }
 
     @Test
     public void testGetGuildInfomationMethod() {
