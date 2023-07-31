@@ -10,7 +10,6 @@ import java.util.List;
  * 圈子基础信息
  *
  * @author peng.gan
- * @date 2023/07/24
  */
 @Data
 public class CircleBaseInfo implements Serializable {
