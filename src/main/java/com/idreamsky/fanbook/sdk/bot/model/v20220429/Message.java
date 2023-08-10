@@ -1,6 +1,10 @@
 package com.idreamsky.fanbook.sdk.bot.model.v20220429;
 
 import com.google.gson.annotations.SerializedName;
+import com.idreamsky.fanbook.sdk.bot.model.v20230216.Answer;
+import com.idreamsky.fanbook.sdk.bot.model.v20230216.AnswerLike;
+import com.idreamsky.fanbook.sdk.bot.model.v20230216.Question;
+import com.idreamsky.fanbook.sdk.bot.model.v20230216.QuestionReaction;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -175,4 +179,15 @@ public class Message implements Serializable {
     @SerializedName("interaction_message_card_operation")
     private Object interactionMessageCardOperation;
 
+    @SerializedName("question")
+    private Question question;
+
+    @SerializedName("question_reaction")
+    private QuestionReaction questionReaction;
+
+    @SerializedName("answer")
+    private Answer answer;
+
+    @SerializedName("answer_like")
+    private AnswerLike answerLike;
 }

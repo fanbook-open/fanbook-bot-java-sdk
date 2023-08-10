@@ -25,7 +25,7 @@ Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/ma
 | 0.2.5.RELEASE | 2023-02-16 | peng.gan | CirclePost修改部分字段的数据类型|
 | 0.2.6.RELEASE | 2023-06-08 | peng.gan | getUpdates新增new_join_members字段用于替换new_chat_members字段|
 | 0.3.0.RELEASE | 2023-07-31 | peng.gan | 增加多个机器人调用方法|
-
+| 0.3.1.RELEASE | 2023-08-10 | peng.gan | 新增问答频道消息对象|
 ## 引入工具包
 
 Maven GAV
