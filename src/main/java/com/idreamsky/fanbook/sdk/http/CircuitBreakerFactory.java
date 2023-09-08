@@ -28,11 +28,12 @@ public class CircuitBreakerFactory {
     public static CircuitBreakerConfig defaultCircuitBreakerConfig() {
         return CircuitBreakerConfig.custom()
                 .minimumNumberOfCalls(10)
-                .failureRateThreshold(80)
-                .waitDurationInOpenState(Duration.ofMillis(20000))
+                .slidingWindowSize(10)
+                .failureRateThreshold(50)
+                .waitDurationInOpenState(Duration.ofMillis(30000))
                 .enableAutomaticTransitionFromOpenToHalfOpen()
                 .permittedNumberOfCallsInHalfOpenState(3)
-                .ignoreExceptions(BotArgumentException.class, BotApiRequestException.class, BotApiRequestException.class)
+                .ignoreExceptions(BotArgumentException.class, BotApiRequestException.class)
                 .build();
     }
 

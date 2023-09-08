@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class CircleCover {
 
-    private Integer height;
+    private Double height;
 
     private String source;
 
-    private Integer width;
+    private Double width;
 }
