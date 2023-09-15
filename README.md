@@ -6,26 +6,27 @@ Fanbook Bot SDK基于[Fanbook开发文档](https://open.fanbook.mobi/document/ma
 
 ## 更新日志
 
-| 版本  | 更新日期 | 作者  | 变更记录 |
-| --- | --- | --- | --- |
-| 0.0.1 | 2022-05-09 | peng.gan | 第一个版本的Fanbook Bot Java SDK。包含大部分常用的Bot API和Oauth2 API。 |
-| 0.0.2.RELEASE | 2022-05-18 | peng.gan | 新增两个频道接口 |
-| 0.0.3.RELEASE | 2022-05-24 | peng.gan | 修正错误 |
-| 0.0.4.RELEASE | 2022-06-14 | peng.gan | GuildRole新增多个字段；修改部分接口路径错误的bug |
-| 0.0.5.RELEASE | 2022-06-15 | peng.gan | channel增加对象;修改部分接口路径错误的bug |
-| 0.0.6.RELEASE | 2022-06-16 | peng.gan | 增加修改频道接口;接口实现构造模式 |
-| 0.0.7.RELEASE | 2022-06-17 | peng.gan | Update对象增加多个Java Bean |
-| 0.0.8.RELEASE | 2022-06-21 | peng.gan | 新增DeleteChannelMethod和ExistsMemberMethod接口 |
-| 0.0.9.RELEASE | 2022-06-21 | peng.gan | Message对象新增三个圈子相关变量;UpdateUtil增加枚举类型 |
-| 0.1.1.RELEASE | 2022-07-01 | peng.gan | Fanbook接口异常打印Error级别日志 |
-| 0.1.3.RELEASE | 2022-07-01 | peng.gan | GetUpdates接口单独使用长轮询线程池，默认设置timeOut=60s |
+| 版本            | 更新日期       | 作者  | 变更记录                                                                                   |
+|---------------|------------| --- |----------------------------------------------------------------------------------------|
+| 0.0.1         | 2022-05-09 | peng.gan | 第一个版本的Fanbook Bot Java SDK。包含大部分常用的Bot API和Oauth2 API。                                 |
+| 0.0.2.RELEASE | 2022-05-18 | peng.gan | 新增两个频道接口                                                                               |
+| 0.0.3.RELEASE | 2022-05-24 | peng.gan | 修正错误                                                                                   |
+| 0.0.4.RELEASE | 2022-06-14 | peng.gan | GuildRole新增多个字段；修改部分接口路径错误的bug                                                         |
+| 0.0.5.RELEASE | 2022-06-15 | peng.gan | channel增加对象;修改部分接口路径错误的bug                                                             |
+| 0.0.6.RELEASE | 2022-06-16 | peng.gan | 增加修改频道接口;接口实现构造模式                                                                      |
+| 0.0.7.RELEASE | 2022-06-17 | peng.gan | Update对象增加多个Java Bean                                                                  |
+| 0.0.8.RELEASE | 2022-06-21 | peng.gan | 新增DeleteChannelMethod和ExistsMemberMethod接口                                             |
+| 0.0.9.RELEASE | 2022-06-21 | peng.gan | Message对象新增三个圈子相关变量;UpdateUtil增加枚举类型                                                   |
+| 0.1.1.RELEASE | 2022-07-01 | peng.gan | Fanbook接口异常打印Error级别日志                                                                 |
+| 0.1.3.RELEASE | 2022-07-01 | peng.gan | GetUpdates接口单独使用长轮询线程池，默认设置timeOut=60s                                                 |
 | 0.1.4.RELEASE | 2022-08-18 | peng.gan | GetUpdates接口单独使用增加interactionMessageCardOperation字段；新增SearchGuildMemberByNameMethod接口; |
-| 0.2.0.RELEASE | 2022-08-23 | peng.gan | 引入resilience4j的熔断器组件，用于保护内部应用安全；修改http config的默认超时时间；|
-| 0.2.3.RELEASE | 2022-11-28 | peng.gan | 新增Async回调方式；新增三个卡片相关的调用类|
-| 0.2.5.RELEASE | 2023-02-16 | peng.gan | CirclePost修改部分字段的数据类型|
-| 0.2.6.RELEASE | 2023-06-08 | peng.gan | getUpdates新增new_join_members字段用于替换new_chat_members字段|
-| 0.3.0.RELEASE | 2023-07-31 | peng.gan | 增加多个机器人调用方法|
-| 0.3.1.RELEASE | 2023-08-10 | peng.gan | 新增问答频道消息对象|
+| 0.2.0.RELEASE | 2022-08-23 | peng.gan | 引入resilience4j的熔断器组件，用于保护内部应用安全；修改http config的默认超时时间；                                  |
+| 0.2.3.RELEASE | 2022-11-28 | peng.gan | 新增Async回调方式；新增三个卡片相关的调用类                                                               |
+| 0.2.5.RELEASE | 2023-02-16 | peng.gan | CirclePost修改部分字段的数据类型                                                                  |
+| 0.2.6.RELEASE | 2023-06-08 | peng.gan | getUpdates新增new_join_members字段用于替换new_chat_members字段                                   |
+| 0.3.0.RELEASE | 2023-07-31 | peng.gan | 增加多个机器人调用方法                                                                            |
+| 0.3.1.RELEASE | 2023-08-10 | peng.gan | 新增问答频道消息对象                                                                             |
+| 0.3.4.RELEASE | 2023-09-15 | peng.gan | 角色类接口新增last_id等字段                                                                      |
 ## 引入工具包
 
 Maven GAV

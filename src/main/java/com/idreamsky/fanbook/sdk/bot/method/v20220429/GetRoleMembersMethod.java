@@ -35,6 +35,11 @@ public class GetRoleMembersMethod extends BotMethod<ArrayList<ChatMember>> {
     @SerializedName("role_id")
     private Long roleId;
 
+    @SerializedName("last_id")
+    private Long lastId;
+
+    @SerializedName("size")
+    private Long size;
     /**
      * 获取接口的端点
      *

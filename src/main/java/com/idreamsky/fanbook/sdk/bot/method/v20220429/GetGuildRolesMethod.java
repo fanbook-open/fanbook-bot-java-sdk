@@ -33,6 +33,8 @@ public class GetGuildRolesMethod extends BotMethod<ArrayList<GuildRole>> {
     @SerializedName("guild_id")
     private Long guildId;
 
+    @SerializedName("last_id")
+    private Long lastId;
     /**
      * 获取接口的端点
      *
